@@ -15,6 +15,9 @@
 
 .item .title {
   font-size: 1.1em;
+  user-select: none;
+  pointer-events: none;
+  margin: 5px;
 }
 
 .item .clickable button {
@@ -25,6 +28,15 @@
   border: 1px black solid;
   border-radius: 20px;
   padding: 5px;
+}
+
+.item .answer_text {
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
 }
 
 .closed .answer {

@@ -9,7 +9,7 @@ function toHtml(item = {}) {
     <button class="copy">Copy</button>
   </div>
   <div class="answer">
-    <p class="answer_text">${answer}</p>
+    <pre class="answer_text">${answer}</pre>
   </div>
   </div>
   `
