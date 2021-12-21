@@ -47,3 +47,17 @@
 .getAll {
   margin-top: 5px;
 }
+
+.loader {
+  margin: auto;
+  background: transparent;
+  shape-rendering: auto;
+}
+
+.btn_container {
+  margin-top: 2px;
+}
+
+.btn_container .btn {
+  margin-right: 1px;
+}
