@@ -1,11 +1,9 @@
 const path = require('path');
 const firstLevel = require(path.resolve(__dirname, '..', 'Answers', 'firstLevel'));
-const secondLevel = require(path.resolve(__dirname, '..', 'Answers', 'secondLevel'));
-const thirdLevel = require(path.resolve(__dirname, '..', 'Answers', 'thirdLevel'));
-const fourthLevel = require(path.resolve(__dirname, '..', 'Answers', 'fourthLevel'));
-const fifthLevel = require(path.resolve(__dirname, '..', 'Answers', 'fifthLevel'));
+const pasteCode = require(path.resolve(__dirname, '..', 'Answers', 'pasteCode'));
 
-const answers = [firstLevel, secondLevel, thirdLevel, fourthLevel, fifthLevel];
+
+const answers = [firstLevel];
 
 const isIn = (first, second) => first.toLowerCase().includes(second.toLowerCase());
 const getErrorMessage = e => [{
@@ -22,6 +20,8 @@ class Controller{
 
       if(text.toLowerCase() === '/all')
         return res.json(answers.reduce((acc, el) => acc.concat(el),[]));
+      else if(text.toLowerCase() === '/p')
+        return res.json(pasteCode);
 
       const matches = [];
   
