@@ -49,10 +49,7 @@
 }
 
 .loader {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: auto;
   background: transparent;
   shape-rendering: auto;
 }

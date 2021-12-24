@@ -1,6 +1,6 @@
 import './style.css';
 
-function toHtmlElement(item = {}) {
+function toHtmlElement(item = {}, index = '') {
   const {title, answer} = item;
 
   const mainWrapper = document.createElement('div');
@@ -12,7 +12,7 @@ function toHtmlElement(item = {}) {
 
   const titleText = document.createElement('div');
   titleText.classList.add('title');
-  titleText.textContent = title;
+  titleText.textContent = `${index}) ${title}`;
 
   const copyButton = document.createElement('button');
   copyButton.classList.add('copy');
