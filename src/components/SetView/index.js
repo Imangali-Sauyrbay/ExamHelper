@@ -12,7 +12,7 @@ function toHtmlElement(item = {}, index = '') {
 
   const titleText = document.createElement('div');
   titleText.classList.add('title');
-  titleText.textContent = `${index}) ${title}`;
+  titleText.textContent = `${index + 1}) ${title}`;
 
   const copyButton = document.createElement('button');
   copyButton.classList.add('copy');
