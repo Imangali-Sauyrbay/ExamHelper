@@ -1,7 +1,7 @@
 const path = require('path');
 const firstLevel = require(path.resolve(__dirname, '..', 'Answers', 'firstLevel'));
 const secondLevel = require(path.resolve(__dirname, '..', 'Answers', 'secondLevel'));
-const thirdLevel = require(path.resolve(____dirname, '..', 'Answers', 'thirdLevel'));
+const thirdLevel = require(path.resolve(__dirname, '..', 'Answers', 'thirdLevel'));
 const pasteCode = require(path.resolve(__dirname, '..', 'Answers', 'pasteCode'));
 
 
