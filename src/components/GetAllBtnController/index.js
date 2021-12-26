@@ -14,6 +14,6 @@ function ClickHandler(num, view){
 }
 
 export default (view)=>{
-  const btn1 = document.querySelector('.firstBtn');
-  btn1.addEventListener('click', ClickHandler(0, view));
+  const btns = document.querySelectorAll('.getAllBtn');
+  btns.forEach((btn, index)=>btn.addEventListener('click', ClickHandler(index, view)))
 }
