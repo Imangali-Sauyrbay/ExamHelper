@@ -1189,28 +1189,4 @@ module.exports = [
 
     `,
   },
-  {
-    title: '',
-    answer: ``,
-  },
-  {
-    title: '',
-    answer: ``,
-  },
-  {
-    title: '',
-    answer: ``,
-  },
-  {
-    title: '',
-    answer: ``,
-  },
-  {
-    title: '',
-    answer: ``,
-  },
-  {
-    title: '',
-    answer: ``,
-  },
 ];
