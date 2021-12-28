@@ -1,1018 +1,919 @@
 module.exports = [
   {
-    title: 'Дан  массив  Q(27). Вычислить сумму  отрицательных элементов',
-    answer: `procedure TForm1.Button1Click(Sender: TObject);
-    const n=27;
-    var a:array[1..n] of integer;
-     i,sum:integer;
-    begin
-    randomize;
-    for i:=1 to n do a[i]:=random(200)-100;
-    sum:=0;
-    for i:=1 to n do
-     if a[i]<0 then
-     begin
-      sum:=sum+a[i];
-     end;
-     label1.Caption:=IntToStr(sum)
-    end;
+    title: 'Кестеде келтірілген 8 ықтималдықтармен u1, u2, …,u8 сигналдары бар. Оларды Шеннон-Фэно кодымен кодтау қажет. 0,25 0,25 0,125 0,125 0,0625 0,0625 0,0625 0,0625',
+    answer: `
+    Si|Pi    |1     |2     |3      |4       |Xi  |Li
+    S1|0.25  |1 0.50|1 0.25|       |        |11  |2
+    S2|0.25  |      |0 0.25|       |        |10  |2
+    S3|0.125 |0 0.50|1 0.25|1 0.125|        |011 |3
+    S4|0.125 |      |      |0 0.125|        |010 |3
+    S5|0.0625|      |0 0.25|1 0.125|1 0.0625|0011|4
+    S6|0.0625|      |      |       |0 0.0625|0010|4
+    S7|0.0625|      |      |0 0.125|1 0.0625|0001|4
+    S8|0.0625|      |      |       |0 0.0625|0000|4
     `,
   },
   {
-    title: 'Матрица N (10, 10) состоит из элементов целого   типа. Вычислить произведение элементов',
-    answer: `procedure TForm1.Button1Click(Sender: TObject);
-    var a:array[1..n,1..m] of integer;
-   i,sum, proizvedenie:integer;
-  begin
-        proizvedenie:=1;
-        for i:=1 to n do
-          for j:=1 to m do
-            if a[i,j] <> 0 then
-              begin
-                proizvedenie := proizvedenie * a[i,j];
-              end;
+    title: 'Сіздің сұхбаттасушыңыз 3-тен аспайтын екі оң санды ойлады. Сіз сұхбаттасушыға тек қана "иә" немесе "жоқ" деп жауап беретін сұрақтар қою арқылы берілген сандардың сомасын табуға тырысасыз. Соманы табу үшін орта есеппен қанша сұрақ қою керек және дұрыс стратегияда болжау үшін қажетті сұрақтардың ең көп саны қандай?',
+    answer: `Кодтық сөздің орташа ұзындығын есептегенде, ол есептелетін формуланы ұмытпау керек:
+    L = ∑_k=1^^m n_k*p(u_k)
+    L = 2 * 1/9 + 2 * 2/9 + 2 * 3/9 + 3 * 2/9 + 3 * 1/9 = 2.33
+    Сұрақтардың орташа саны – 2,33; жоспарланған сома сандарды ең көбі 3 сұрақтан табуға болады.
+    `,
+  },
+  {
+    title: 'Жадсыз ақпарат көздердің шығу хабарламасы тиісінше 0,8 және 0,2 ықтималдығымен A және B мәнін қабылдайтын әріптерден тұрады. Жеке әріптердің Шеннон – Фэно әдісі бойынша кодтауды жүргізу. Олардың тиімділігі бойынша кодтарды табу.',
+    answer: `
+        |Pi    |I       |Xi
+    A   |0.8   |1 0.8   |1
+    B   |0.2   |0 0.2   |0
+    `,
+  },
+  {
+    title: '0,64 0,16 0,16 0,04 Біз екі әріптен блоктарды қалыптастырамыз: AA, AB, BA, BB. Әрбір блоктың ықтималдығы блокқа кіретін әріптердің ықтималдығын көбейту арқылы болады. Екі әріпті блокты Шеннон – Фэно әдісімен кодтауды жүргізу. Олардың тиімділігі бойынша кодтарды табу.',
+    answer: `
+      |Pi  |1     |2     |3     |Xi
+    AA|0.64|1 0.64|      |      |1
+    AB|0.16|0 0.36|1 0.16|      |01
+    BA|0.16|      |0 0.20|1 0.16|001
+    BB|0.04|      |      |0 0.04|000
   `,
   },
   {
-    title: 'Массив А состоит из 17 элементов. Элементы целочисленного типа. Опишите',
-    answer: `procedure TForm1.Button1Click(Sender: TObject);
-    const n=17;
-      var a:array[1..n] of integer;
-     i:integer;
-    begin
-    randomize;
-    for i:=1 to n do a[i]:=random(200)-100;
-    for i:=1 to n do 
-    begin
-    label1.Caption:= IntToStr(a[i])
-    end;
-    `,
-  },
-  {
-    title: 'Массив Ді состоит из 10 элементов. Вычислить максимальный элемент и его порядковый номер',
-    answer: `procedure TForm1.Button1Click(Sender: TObject);
-    const n=10;
-      var a:array[1..n] of integer;
-    k,i,max:integer;
-    begin
-    k:=0;
-    max:=0;
-    randomize;
-    for i:=1 to n do a[i]:=random(200)-100;
-    for i:=1 to n do
-           begin
-              if a[i] > max then begin
-               max:=a[i];
-               k:=i;
-           end;
-           label1.Caption:= IntToStr(a[i])
-            label2.Caption:= IntToStr(k)
-    end;
-    `,
-  },
-  {
-    title: 'Массив Сі состоит из 7 элементов, вычислите среднее арифметическое элементов',
-    answer: `procedure TForm1.Button1Click(Sender: TObject);
-    const n=7;
-      var a:array[1..n] of integer;
-    i:integer;
-    sum:Double;
-    begin
-    k:=0;
-    max:=0;
-    randomize;
-    for i:=1 to n do a[i]:=random(200)-100;
-    sum:=0;
-    for i:=1 to n do
-           begin
-              sum:=sum+a[i];
-           end;
-    sum:=sum/n;
-           label1.Caption:= IntToStr(sum)
-    end;
-    `,
-  },
-  {
-    title: 'Массив Аі состоит из 12 элементов. Определите отрицательные элементы и их порядковые номера',
-    answer: `procedure TForm1.Button1Click(Sender: TObject);
-    const n=12;
-    var a:array[1..n] of integer;
-     i,k,otriz:integer;
-    begin
-    k=0;
-    otriz=0
-    randomize;
-    for i:=1 to n do a[i]:=random(200)-100;
-    sum:=0;
-    for i:=1 to n do
-     if a[i]<0 then
-     begin
-      otriz:=a[i];
-      k:=i; 
-      label1.Caption:=IntToStr(otriz);
-      label2.Caption:=IntToStr(k);
-     end;
-    end;
-    `,
-  },
-  {
-    title: 'Массив F состоит из 35 элементов. Определите  минимальный элемент и его порядковый номер',
-    answer: `procedure TForm1.Button1Click(Sender: TObject);
-    const n=35;
-      var a:array[1..n] of integer;
-    k,i,max:integer;
-    begin
-    k:=0;
-    min:=1000;
-    randomize;
-    for i:=1 to n do a[i]:=random(200)-100;
-    for i:=1 to n do
-           begin
-              if a[i] < min then begin
-               max:=a[i];
-               k:=i;
-           end;
-    label1.Caption:= IntToStr(a[i])
-    label2.Caption:= IntToStr(k)
-    end;
-    `,
-  },
-  {
-    title: 'Массив I состоит из 30 элементов. Определите количество и сумму элементов кратных 3',
-    answer: `procedure TForm1.Button1Click(Sender: TObject);
-    const n=30;
-      var a:array[1..n] of integer;
-    k,i,sum:integer;
-    begin
-    k:=0;
-    sum:=0;
-    randomize;
-    for i:=1 to n do a[i]:=random(200)-100;
-    for i := 1 to n do 
-       begin 
-          if a[i] mod 3 = 0 then sum := sum + a[i];
-          k:=k+1;
-       end;
-    label1.Caption:= IntToStr(sum)
-    label2.Caption:= IntToStr(k)
-    end;
-    `,
-  },
-  {
-    title: 'Массив Сі состоит из 17 элементов. Определите наименьшее из элементов',
-    answer: `procedure TForm1.Button1Click(Sender: TObject);
-    const n=35;
-      var a:array[1..n] of integer;
-    k,i,max:integer;
-    begin
-    k:=0;
-    min:=1000;
-    randomize;
-    for i:=1 to n do a[i]:=random(200)-100;
-    for i:=1 to n do
-           begin
-              if a[i] < min then begin
-               max:=a[i];
-               k:=i;
-           end;
-    label1.Caption:= IntToStr(a[i])
-    label2.Caption:= IntToStr(k)
-    end;
-    `,
-  },
-  {
-    title: 'Массив Аі состоит из 20 элементов. Определите произведение отрицательных элементов',
-    answer: `procedure TForm1.Button1Click(Sender: TObject);
-    const n=20;
-      var a:array[1..n] of integer;
-    i, proizvedenie:integer;
-    begin
-    randomize;
-    for i:=1 to n do a[i]:=random(200)-100;
-    proizvedenie:=1;
-    for i := 1 to n do 
-       begin 
-          proizvedenie:=1;
-          for i:=1 to n do
-              if a[i] < 0 then
-                begin
-                  proizvedenie := proizvedenie * a[i];
-                end;
-    label1.Caption:= IntToStr(proizvedenie)
-    end;
-    `,
-  },
-  {
-    title: 'Массивы А, В состоят из 10 элементов. Найдите сумму элементов',
-    answer: `procedure TForm1.Button1Click(Sender: TObject);
-    const n=10;
-      var 
-    a:array[1..n] of integer;
-    b:array[1..n] of integer;
-    i,sum:integer;
-    begin
-    sum:=0;
-    randomize;
-    for i:=1 to n do a[i]:=random(200)-100;
-    for i:=1 to n do b[i]:=random(200)-100;
-    for i := 1 to n do 
-       begin 
-          sum := sum + a[i]+ b[i];
-       end;
-    label1.Caption:= IntToStr(sum)
-    end;
-    `,
-  },
-  {
-    title: 'Массив Аі состоит из 30 элементов. Элементы целочисленного типа. Напечатать элементы, кратные 5',
-    answer: `procedure TForm1.Button1Click(Sender: TObject);
-    const n=30;
-      var a:array[1..n] of integer;
-    k,i:integer;
-    begin
-    k:=0;
-    sum:=0;
-    randomize;
-    for i:=1 to n do a[i]:=random(200)-100;
-    for i := 1 to n do 
-       begin 
-          if a[i] mod 5 = 0 then 
-            label1.Caption:= IntToStr(a[i]);
-       end;
-    end;
-    `,
-  },
-  {
-    title: 'Массив Ді состоит из 10 элементов. Определите сумму отрицательных элементов',
-    answer: `procedure TForm1.Button1Click(Sender: TObject);
-    const n=10;
-    var a:array[1..n] of integer;
-     i,sum:integer;
-    begin
-    randomize;
-    for i:=1 to n do a[i]:=random(200)-100;
-    sum:=0;
-    for i:=1 to n do
-     if a[i]<0 then
-     begin
-      sum:=sum+a[i];
-     end;
-    label1.Caption:=IntToStr(sum);
-    end;
-    `,
-  },
-  {
-    title: 'Матрица B имеет размер 5x7. Вычислить сумму элементов',
-    answer: `procedure TForm1.Button1Click(Sender: TObject);
-    const n=5;
-    const m=7;
-      var a:array[1..n,1..m] of integer;
-     i,sum:integer;
-    begin
-          randomize;
-          sum:=0
-          for i:=1 to n do
-            for j:=1 to m do
-              for i:=1 to n do a[i,j]:=random(200)-100;
-              begin
-              sum:=sum+a[i,j];
-              end;
-    label1.Caption:=IntToStr(sum);
-     end;
-    `,
-  },
-  {
-    title: 'Массив А состоит из 10 элементов. Печатать элементы кратные 4',
-    answer: `procedure TForm1.Button1Click(Sender: TObject);
-    const n=10;
-      var a:array[1..n] of integer;
-    k,i:integer;
-    begin
-    k:=0;
-    sum:=0;
-    randomize;
-    for i:=1 to n do a[i]:=random(200)-100;
-    for i := 1 to n do 
-       begin 
-          if a[i] mod 4 = 0 then 
-            label1.Caption:= IntToStr(a[i]);
-       end;
-    end;
-    `,
-  },
-  {
-    title: 'Матрица С размером 2x5. Найдите произведение элементов',
-    answer: `procedure TForm1.Button1Click(Sender: TObject);
-    const n=2;
-    const m=5;
-      var a:array[1..n,1..m] of integer;
-     i,sum, proizvedenie:integer;
-    begin
-          randomize;
-          sum:=0;
-          proizvedenie := 1;
-          for i:=1 to n do
-            for j:=1 to m do
-              for i:=1 to n do a[i,j]:=random(200)-100;
-              begin
-              proizvedenie := proizvedenie * a[i,j];
-              end;
-    label1.Caption:=IntToStr(proizvedenie);
-     end;
-    `,
-  },
-  {
-    title: 'Массив Н состоит из 30 элементов. Элементы символьного типа. Выедите на печать в поле Memo1',
+    title: '0,512 0,128 0,128 0,128 0,32 0,32 0,32 0,008 Біз үш әріптен блоктарды қалыптастырамыз: ААА, ААВ, АВА, АВВ, ВАА, ВАВ, ВВА, ВВВ. Үш әріпті блоктардың Шеннон – Фэно әдісі бойынша кодтауды жүргізу. Олардың тиімділігі бойынша кодтарды табу.',
     answer: `
-    procedure TForm25.Button1Click(Sender: TObject);
-    var
-      B:array [0..29] of Char;
-      i,j:integer;
-    begin
-      for i := 0 to 29 do begin
-              B[i]:=Chr(random(26)+65);
-              Memo1.Lines.Add(B[i]);
-      end;
-    end;
+       |Pi   |1      |2      |3      |4      |5      |Xi
+    AAA|0.512|1 0.512|       |       |       |       |1
+    AAB|0.128|0 0.488|1 0.256|1 0.128|       |       |011
+    ABA|0.128|       |       |0 0.128|       |       |010
+    ABB|0.128|       |0 0.232|1 0.128|       |       |001
+    BAA|0.32 |       |       |0 0.104|1 0.64 |1 0.32 |00011
+    BAB|0.32 |       |       |       |       |0 0.32 |00010
+    BBA|0.32 |       |       |       |0 0.328|1 0.32 |00001
+    BBB|0.008|       |       |       |       |0 0.008|00000
+    `,
+  },
+  {
+    title: 'Келесі ансамбльмен сипатталатын жадсыз ақпарат көздері үшін Шеннон-Фэно екілік кодын алу қажет: 0,14 0,07 0,12 0,11 0,22 0,05 0,16 0,13 Қосымша H(S) энтропиясын, Нmax, E(S) тиімділігін, S  ақпарат көзінің R(S) артықтықты,  L ̅  кодтық сөздің орташа ұзындығын,  Шеннон Фэно кодының E  тиімділігін табыңыз.',
+    answer: `
+    Si|Pi  |1     |2     |3     |4     |Xi  |Li
+    S5|0.22|1 0.52|1 0.22|      |      |11  |2
+    S7|0.16|      |0 0.30|1 0.16|      |101 |3
+    S1|0.14|      |      |0 0.14|      |100 |3
+    S8|0.13|0 0.48|1 0.25|1 0.13|      |011 |3
+    S3|0.12|      |      |0 0.12|      |010 |3
+    S4|0.11|      |0 0.23|1 0.11|      |001 |3
+    S2|0.07|      |      |0 0.12|1 0.07|0001|4
+    S6|0.05|      |      |      |0 0.05|0000|4
+
+    H(s)=-(0.22*log0.22+0.16*log0.16+0.14*log0.14+0.13*log0.13+0.12*log0.12+0.11*log0.11+ 0.07*log0.07+0.05*log0.05)=2.885 бит/сим
+    L=0.22*2+0.16*3+0.14*3+0.13*3+0.12*3+0.11*3+0.07*4+0.05*4=2.9
+    R=H/L=2.885/2.9=0.995
+    R=1-0.995=0.005
+    `,
+  },
+  {
+    title: 'Жадсыз ақпарат көздері үшін Хаффман екілік кодын алу қажет: 0,11 0,06 0,1 0,2 0,25 0,15 0,26 0,18 Қосымша L ̅  кодтық сөздің орташа ұзындығын,  Шеннон - Фэно кодының E  тиімділігін табыңыз',
+    answer: `
+    si|1   |2   |3   |4   |5   |6   |7   |8
+    S7|0.26|0.26|0.26|0.34|0.45|0.52|0.79|1.32
+    S5|0.25|0.25|0.26|0.26|0.34|0.45|0.52
+    S4|0.2 |0.2 |0.25|0.26|0.26|0.34
+    S8|0.18|0.18|0.2 |0.25|0.26
+    S6|0.15|0.16|0.18|0.2
+    S1|0.11|0.15|0.16
+    S3|0.1 |0.11
+    S2|0.06
+
+    L=2*0.26+3*0.25+3*0.2+3*0.18+3*0.15+3*0.11+4*0.1+4*0.06=3.83
+
+    Si|Pi  |1     |2     |3     |4     |Xi  |Li
+    S7|0.26|1 0.71|1 0.26|      |      |11  |2
+    S5|0.25|      |0 0.45|1 0.25|      |101 |3
+    S4|0.20|      |      |0 0.20|      |100 |3
+    S8|0.18|0 0.60|1 0.33|1 0.18|      |011 |3
+    S6|0.15|      |      |0 0.15|      |010 |3
+    S1|0.11|      |0 0.27|1 0.11|      |001 |3
+    S3|0.1 |      |      |0 0.16|1 0.10|0001|4
+    S2|0.06|      |      |      |0 0.06|0000|4
+
+    L=2*0.26+3*0.25+3*0.2+3*0.18+3*0.15+3*0.11+4*0.1+4*0.06=3.83
+    H=-(0.26*log0.26+0.25*log0.25+0.2*log0.2+0.18*log0.18+0.15+log0.15+0.11*log0.11+ 0.1*log0.1+0.06*log0.06)=3.25 бит/сим
+    E=H/L=3.25/3.83=0.848
+    `,
+  },
+  {
+    title: '. Жадсыз ақпарат көздері үшін Хаффман екілік кодын алу қажет: 0,1 0,2 0,3 0,4 0,5 0,6 0,7 0,8 Қосымша L ̅  кодтық сөздің орташа ұзындығын,  Шеннон - Фэно кодының E  тиімділігін табыңыз.',
+    answer: `
+    si|1  |2  |3  |4  |5  |6  |7  |8
+    S8|0.8|0.8|0.8|0.9|1.2|1.5|2.1|3.6
+    S7|0.7|0.7|0.7|0.8|0.9|1.2|1.5
+    S6|0.6|0.6|0.6|0.7|0.8|0.9
+    S5|0.5|0.5|0.6|0.6|0.7
+    S4|0.4|0.4|0.5|0.6
+    S3|0.3|0.3|0.4
+    S2|0.2|0.3
+    S1|0.1
+
+    L=2*0.8+3*0.7+3*0.6+3*0.5+3*0.4+3*0.3+4*0.2+4*0.1=10.3
+
+    Si|Pi |1    |2    |3    |4    |Xi  |Li
+    S8|0.8|1 2.1|1 0.8|     |     |11  |2
+    S7|0.7|     |0 1.3|1 0.7|     |101 |3
+    S6|0.6|     |     |0 0.6|     |100 |3
+    S5|0.5|0 1.5|1 0.9|1 0.5|     |011 |3
+    S4|0.4|     |     |0 0.5|     |010 |3
+    S3|0.3|     |0 0.6|1 0.3|     |001 |3
+    S2|0.2|     |     |0 0.3|1 0.2|0001|4
+    S1|0.1|     |     |     |0 0.1|0000|4
+
+    L=2*0.8+3*0.7+3*0.6+3*0.5+3*0.4+3*0.3+4*0.2+4*0.1=10.3
+    H=-(0.8*log0.8+0.7*log0.7+0.6*log0.6+0.5*log0.5+0.4*log0.4+0.3*log0.3+
+    0.2*log0.2+ 0.1*log0.1)=3.40 бит/сим
+    E=3.40/10.3=0.33
+    `,
+  },
+  {
+    title: 'Жадсыз ақпарат көздері үшін Хаффман екілік кодын алу қажет: 0,01 0,06 0,01 0,02 0,25 0,05 0,06 0,08 Қосымша L ̅  кодтық сөздің орташа ұзындығын,  Шеннон - Фэно кодының E  тиімділігін табыңыз.',
+    answer: `
+    si|1   |2   |3   |4   |5   |6   |7   |8
+    S5|0.25|0.25|0.25|0.25|0.25|0.25|0.29|0.54
+    S8|0.08|0.08|0.08|0.09|0.12|0.17|0.25
+    S7|0.06|0.06|0.06|0.08|0.09|0.12
+    S2|0.06|0.06|0.06|0.06|0.08
+    S6|0.05|0.05|0.05|0.06
+    S4|0.02|0.02|0.04
+    S1|0.01|0.02
+    S3|0.01
+
+    L=2*0.25+3*0.08+3*0.06+3*0.06+3*0.05+3*0.02+4*0.01+4*0.01=1.39
+
+    Si|Pi  |1     |2     |3     |4     |5     |Xi   |Li
+    S5|0.25|1 0.25|      |      |      |      |1    |1
+    S8|0.08|0 0.29|1 0.14|1 0.08|      |      |011  |3
+    S2|0.06|      |      |0 0.06|      |      |010  |3
+    S7|0.06|      |0 0.15|1 0.11|1 0.06|      |0011 |4
+    S6|0.05|      |      |      |0 0.05|      |0010 |4
+    S4|0.02|      |      |0 0.04|1 0.02|      |0001 |4
+    S1|0.01|      |      |      |0 0.02|1 0.01|00001|5
+    S3|0.01|      |      |      |      |0 0.01|00000|5
+
+
+
+    L=2*0.25+3*0.08+3*0.06+3*0.06+3*0.05+3*0.02+4*0.01+4*0.01=1.39
+    H=-(0.25*log0.25+0.08*log0.08+0.06*log0.06+0.06*log0.06+0.05*log0.05+ 0.02*log0.02+0.01*log0.01+0.01*log0.01)=1.24 бит/сим
+    E=H/L=1.24/1.39=0.829
 
     `,
   },
   {
-    title: 'Массив а состоит из 15 элементов. Определите количество положительных  элементов',
-    answer: `procedure TForm1.Button1Click(Sender: TObject);
-    const n=15;
-      var a:array[1..n] of integer;
-    k,i:integer;
-    begin
-    k:=0;
-    randomize;
-    for i:=1 to n do a[i]:=random(200)-100;
-    for i := 1 to n do 
-       begin 
-          if a[i]>0 then 
-              begin
-              k:=k+1;
-              end;
-    label1.Caption:=IntToStr(k);
-    end;`,
-  },
-  {
-    title: 'Дана матрица Д(10, 10) Вычислить сумму элементов главного  диагоналя',
-    answer: `procedure TForm1.Button1Click(Sender: TObject);
-    const n=10;
-    const m=10;
-      var a:array[1..n,1..m] of integer;
-     i,sum,j:integer;
-    begin
-          randomize;
-          sum:=0;
-          for i:=1 to n do
-            for j:=1 to m do
-              a[i,j]:=random(200)-100;
-          for i:=1 to n do  
-             sum:=sum+a[i,i];
-    label1.Caption:=IntToStr(sum);
-     end;
+    title: 'Жадсыз ақпарат көздері үшін Хаффман екілік кодын алу қажет: 0,06  0,06  0,1 0,2  0,25  0,3 0,26 0,4 Қосымша L ̅  кодтық сөздің орташа ұзындығын,  Шеннон - Фэно кодының E  тиімділігін табыңыз',
+    answer: `
+    si|1   |2   |3   |4   |5   |6   |7   |8
+    S8|0.40|0.40|0.40|0.42|0.51|0.70|0.93|1.63
+    S6|0.30|0.30|0.30|0.40|0.42|0.51|0.70
+    S7|0.26|0.26|0.26|0.30|0.40|0.42
+    S5|0.25|0.25|0.25|0.26|0.30
+    S4|0.20|0.20|0.22|0.25
+    S3|0.01|0.12|0.20
+    S1|0.06|0.10
+    S2|0.06
+
+    L=2*0.4+3*0.3+3*0.26+3*0.25+3*0.2+3*0.1+4*0.06+4*0.06=4.61
+
+    Si|Pi  |1     |2      |3     |4     |5     |Xi   |Li
+    S8|0.40|1 0.70|1  0.40|      |      |      |11   |2
+    S6|0.30|      |0  0.30|      |      |      |10   |2
+    S7|0.26|0 0.93|1  0.51|1 0.26|      |      |011  |3
+    S5|0.25|      |       |0 0.25|      |      |010  |3
+    S4|0.20|      |0  0.42|1 0.20|      |      |001  |3
+    S3|0.10|      |       |0 0.22|1 0.10|      |0001 |4
+    S2|0.06|      |       |      |0 0.12|1 0.06|00001|5
+    S1|0.06|      |       |      |      |0 0.06|00000|5
+    
+    L=2*0.4+3*0.3+3*0.26+3*0.25+3*0.2+3*0.1+4*0.06+4*0.06=4.61
+    H=-(0.4*log0.4+0.3*log0.3+0.26*log0.26+0.25*log0.25+0.2*log0.2+0.1*log0.1+ 0.06*log0.06+0.06*log0.06)=3.33 бит/сим
+    E=H/L=3.33/4.61=0.722
     `,
   },
   {
-    title: 'Дан массив G (20)  Вычислить сумму отрицательных элементов',
-    answer: `procedure TForm1.Button1Click(Sender: TObject);
-    const n=20;
-    var a:array[1..n] of integer;
-     i,sum:integer;
-    begin
-    randomize;
-    for i:=1 to n do a[i]:=random(200)-100;
-    sum:=0;
-    for i:=1 to n do
-     if a[i]<0 then
-     begin
-      sum:=sum+a[i];
-     end;
-    label1.Caption:=IntToStr(sum);
-    end;
+    title: 'Жадсыз ақпарат көздері үшін Хаффман екілік кодын алу қажет: 0,01 0,06 0,01 0,02 ,03 0,03 0,04 0,04 Қосымша L ̅  кодтық сөздің орташа ұзындығын,  Шеннон - Фэно кодының E  тиімділігін табыңыз.',
+    answer: `
+    si|1   |2   |3   |4   |5   |6   |7   |8
+    S2|0.06|0.06|0.06|0.06|0.08|0.10|0.14|0.24
+    S8|0.04|0.04|0.04|0.06|0.06|0.08|0.1
+    S7|0.04|0.04|0.04|0.04|0.06|0.06
+    S5|0.03|0.03|0.04|0.04|0.04
+    S6|0.03|0.03|0.03|0.04
+    S4|0.02|0.02|0.03
+    S1|0.01|0.02
+    S3|0.01
+
+    L=2*0.06+3*0.04+3*0.04+3*0.03+3*0.03+3*0.02+4*0.01+4*0.01=0.6
+
+    S |P   |1     |2     |3     |4     |Xi  |L
+    S2|0.06|1 0.14|1 0.06|      |      |11  |2
+    S7|0.04|      |0 0.08|1 0.04|      |101 |3
+    S8|0.04|      |      |0 0.04|      |100 |3
+    S5|0.03|0 0.10|1 0.06|1 0.03|      |011 |3
+    S6|0.03|      |      |0 0.03|      |010 |3
+    S4|0.02|      |0 0.04|1 0.02|      |001 |3
+    S1|0.01|      |      |0 0.02|1 0.01|0001|4
+    S3|0.01|      |      |      |0 0.01|0000|4
+
+    L=2*0.06+3*0.04+3*0.04+3*0.03+3*0.03+3*0.02+4*0.01+4*0.01=0.6
+    H=-(0.06*log0.06+0.04*log0.04+0.04*log0.04+0.03*log0.03+0.03*log0.03+0.02*log0.02+ 0.01*log0.01+0.01*log0.01)=0.56 бит/сим
+    E=H/L=0.56/0.6=0.933
     `,
   },
   {
-    title: 'Дана матрица Р(к, к) (к=7). Вместо отрицательных элементов в матрице ставим ноли и выводим на печать',
-    answer: `var
-    Form22: TForm22;
-    r,c: integer;
-    S: real;
-    D:array [0..6,0..6] of integer;
-    i,j:integer;
-  
-    implementation
-    
-    {$R *.dfm}
-    
-    procedure TForm22.Button1Click(Sender: TObject);
-    begin
-      val(Edit1.Text, r, c);
-    
-      for i := 0 to 6 do begin
-    
-          for j := 0 to 6 do begin
-              D[i,j]:=Random(r)-20;
-              stringgrid1.Cells[i,j]:=inttostr(D[i,j]);
-          end;
-    
-      end;
-    end;
-    
-    procedure TForm22.Button2Click(Sender: TObject);
-    begin
-        S := 0;
-      for i := 0 to 6 do begin
-          for j := 0 to 6 do begin
-                if D[i,j] < 0 then D[i,j] := 0;
-    
-                stringgrid2.Cells[i,j]:=inttostr(D[i,j]);
-          end;
-      end;
-    
-    end;
-  
-  `,
-  },
-  {
-    title: 'Массив Аі состоит из 15 элементов. Найдите умножение квадратов положительных элементов',
-    answer: `procedure TForm24.Button1Click(Sender: TObject);
-    var
-     a1: real;
-    r,c: integer;
-    a:array [1..15] of real;
-     i:integer;
-    begin
-     val(Edit1.Text, r, c);
-     a1 := 1;
-    
-      for i:=1 to 15 do
-      begin
-        a[i]:=Random(r)-25;
-    
-        if a[i]>0 then a1 := a1 * Power(a[i],2);
-    
-        Memo1.Lines.Add('x' + FloatToStr(i) + ':  ' + FloatToStr(a[i]));
-      end;
-    Memo1.Lines.Add('умножение квадратов положительных элементов:'+FloatToStr(a1));
-    end;
+    title: 'Жадсыз ақпарат көздері үшін Хаффман екілік кодын алу қажет: 0,1 0,6 0,7 0,8 0,9 0,5 0,4 0,45 Қосымша L ̅  кодтық сөздің орташа ұзындығын,  Шеннон - Фэно кодының E тиімділігін табыңыз.',
+    answer: `
+    si|1   |2   |3   |4   |5   |6   |7  |8
+    S5|0.90|0.90|0.95|1.10|1.50|1.85|2.6|4.45
+    S4|0.80|0.80|0.90|0.95|1.10|1.50|1.85
+    S3|0.70|0.70|0.80|0.90|0.95|1.1
+    S2|0.60|0.60|0.70|0.80|0.9
+    S6|0.50|0.50|0.60|0.70
+    S8|0.45|0.50|0.50
+    S7|0.40|0.45
+    S1|0.10
+
+    L=2*0.9+3*0.8+3*0.7+3*0.6+3*0.5+3*0.45+4*0.4+4*0.1=12.95
+
+    S |P   |1     |2     |3     |4    |Xi  |Li
+    S5|0.90|1 2.40|1 0.90|      |     |11  |2
+    S4|0.80|      |0 0.15|1 0.80|     |101 |3
+    S3|0.70|      |      |0 0.70|     |100 |3
+    S3|0.60|0 2.05|1 1.10|1 0.60|     |011 |3
+    S6|0.50|      |      |0 0.50|     |010 |3
+    S8|0.45|      |0 0.95|1 0.45|     |001 |3
+    S7|0.40|      |      |0 0.50|1 0.4|0001|4
+    S1|0.10|      |      |      |0 0.1|0000|4
+
+    L=2*0.9+3*0.8+3*0.7+3*0.6+3*0.5+3*0.45+4*0.4+4*0.1=12.95
+    H=-(0.9*log0.9+0.8*log0.8+0.7*log0.7+0.6*log0.6+0.5*log0.5+0.45*log0.45+ 0.4*log0.4+0.1*log0.1) =  3.07 бит/сим
+    E=3.07/12.95=0.237
     `,
   },
   {
-    title: 'Массив G(22) состоит из целых элементов. Вычислить произведение элементов',
-    answer: `procedure TForm24.Button1Click(Sender: TObject);
-    var
-      a1: real;
-      r,c: integer;
-      a:array [1..22] of real;
-      i:integer;
-    begin
-      val(Edit1.Text, r, c);
-    
-      for i:=1 to 22 do
-      begin
-        a[i]:=Random(r)-5;
-    
-        a1 := a1 * a[i];
-    
-        Memo1.Lines.Add('x' + FloatToStr(i) + ':  ' + FloatToStr(a[i]));
-      end;
-      Memo1.Lines.Add('Произведение элементов массива: ' + FloatToStr(a1));
-    end;
+    title: 'S = {s1, s2 , … s12} алфавиті бар жадcыз дискретті ақпарат көздері үшін энтропияны, тиімділікті және артықтықты анықтау. Хабарлама ақпарат көздерінің символдарының пайда болу ықтималдығы кестеде келтірілген. 0,14 0,06 0,05 0,08 0,13 0,04 0,01 0,09 0,15 0,02 0,11 0,12',
+    answer: `H=-(0.14*log0.14+0.06*log0.06+0.05*log0.05+0.08*log0.08+0.13*log0.13+ 0.04*log0.04+0.01*log0.04+0.01*log0.01+0.09*log0.09+0.15*log0.15+0.02*log0.02+ 0.11*log0.11+0.12*log0.12)=3.33652 бит/сим
+    Hmax=log12=3.585 бит/сим
+    E=H/Hmax=0.93
+    R=1-E=1-0.93=0.07
     `,
   },
   {
-    title: 'Дан массив R (9). Вместо отрицательных элементов пишем 0, вместо положительных- 1',
-    answer: `procedure TForm24.Button1Click(Sender: TObject);
-    var
-      r,c: integer;
-      a:array [1..9] of real;
-      i:integer;
-    begin
-      val(Edit1.Text, r, c);
-    
-      for i:=1 to 9 do
-      begin
-        a[i]:=Random(r)-15;
-    
-        if a[i]>0 then a[i] := 1
-        else if a[i]<0 then a[i] := 0;
-    
-        Memo1.Lines.Add('x' + FloatToStr(i) + ':  ' + FloatToStr(a[i]));
-      end;
-    
-    end;
+    title: 'Кесте түрінде Шеннон - Фэно екілік кодын алу. Шеннон-Фэно коды үшін кодтық ағаш құру және код тиімділігін анықтау. 0,11 0,05 0,09 0,10 0,12 0,03 0,02 0,08 0,15 0,07 0,14 0,04',
+    answer: `
+    Si |Pi  |1     |2     |3     |4     |5     |Xi   |Li
+    S9 |0.15|1 0.52|1 0.29|1 0.15|      |      |111  |3
+    S11|0.14|      |      |0 0.14|      |      |100  |3
+    S5 |0.12|      |0 0.23|1 0.12|      |      |101  |3
+    S1 |0.11|      |      |0 0.11|      |      |100  |3
+    S4 |0.10|0 0.48|1 0.27|1 0.10|      |      |011  |3
+    S3 |0.09|      |      |0 0.17|1 0.09|      |0101 |4
+    S8 |0.08|      |      |      |0 0.08|      |0100 |4
+    S10|0.07|      |0 0.21|1 0.12|1 0.07|      |0011 |4
+    S2 |0.05|      |      |      |0 0.05|      |0010 |4
+    S12|0.04|      |      |0 0.09|1 0.04|      |0001 |4
+    S6 |0.03|      |      |      |0 0.05|1 0.03|00001|5
+    S7 |0.02|      |      |      |      |0 0.02|00000|5
+
+    H=-(0.15*log0.15+0.14*log0.14+0.12*log0.12+0.11*log0.11+0.1*log0.1+0.09*log0.09+ 0.08*log0.08+0.07*log0.07+0.05*log0.05+0.04*log0.04+0.03*log0.03+0.02*log0.02=3.33 
+    L=0.15*3+0.14*3+0.12*3+0.11*3+0.10*3+0.09*4+0.08*4+0.07*4+0.05*4+0.04*4+
+    0.03*5+0.02*5=3.43
+    E=H/L=3.33/3.43=0.9708 
     `,
   },
   {
-    title: 'Массив N состоит из 40 элементов. Вычислите сумму положительных  элементов',
-    answer: `procedure TForm24.Button1Click(Sender: TObject);
-    var
-      S: real;
-      r,c: integer;
-      a:array [1..40] of real;
-      i:integer;
-    begin
-      val(Edit1.Text, r, c);
-      S := 0;
-    
-      for i:=1 to 40 do
-      begin
-        a[i]:=Random(r)-15;
-    
-        if a[i]>0 then S := S + a[i];
-    
-        Memo1.Lines.Add('x' + FloatToStr(i) + ':  ' + FloatToStr(a[i]));
-      end;
-      Memo1.Lines.Add('сумму положительных  элементов: ' + FloatToStr(S));
-    end;
+    title: 'Хаффман әдісі арқылы берілген символдардың тағайындалған ықтималдығы үшін тиімді кодты алу. 0,13 0,07 0,05 0,06 0,15 0,04 0,11 0,02 0,12 0,16 0,08 0,01',
+    answer: `
+    si |1   |2   |3   |4   |5   |6   |7   |8   |9   |10  |11  |12
+    S3 |0.16|0.16|0.16|0.16|0.16|0.19|0.23|0.27|0.31|0.42|0.58|1
+    S7 |0.15|0.15|0.15|0.15|0.15|0.16|0.19|0.23|0.27|0.31|0.42
+    S11|0.13|0.13|0.13|0.13|0.14|0.15|0.16|0.19|0.23|0.27
+    S6 |0.12|0.12|0.12|0.12|0.13|0.14|0.15|0.16|0.19
+    S5 |0.11|0.11|0.11|0.11|0.12|0.13|0.14|0.15
+    S2 |0.08|0.08|0.08|0.11|0.11|0.12|0.13
+    S10|0.07|0.07|0.07|0.08|0.11|0.11
+    S8 |0.06|0.06|0.07|0.07|0.08
+    S9 |0.05|0.05|0.06|0.07
+    S12|0.04|0.04|0.05
+    S4 |0.02|0.03
+    S1 |0.01
     `,
   },
   {
-    title: 'Дана матрица R (М, N). Вычислить  сумму элементов',
-    answer: `var
-    Form22: TForm22;
-    r,c: integer;
-    S: real;
-    R1:array [0..6,0..4] of integer;
-    i,j:integer;
-  implementation
-  {$R *.dfm}
-  
-  procedure TForm22.Button1Click(Sender: TObject);
-  begin
-     val(Edit1.Text, r, c);
-  
-     for i := 0 to 6 do begin
-         for j := 0 to 4 do begin
-             R1[i,j]:=Random(r)-10;
-             stringgrid1.Cells[i,j]:=inttostr(R1[i,j]);
-         end;
-     end;
-  end;
-  
-  procedure TForm22.Button2Click(Sender: TObject);
-  begin
-      S := 0;
-     for i := 0 to 6 do begin
-         for j := 0 to 4 do begin
-               S := S + R1[i,j];
-  
-         end;
-     end;
-     Memo1.Lines.Add('Сумма: ' + FloatToStr(S));
-  end;
-  `,
-  },
-  {
-    title: 'Дан  массив  Т(20).   Определите сумму элементов, кратную 3',
-    answer: `procedure TForm24.Button1Click(Sender: TObject);
-    var
-      S: real;
-      r,c: integer;
-      T:array [1..20] of integer;
-      i:integer;
-    begin
-      val(Edit1.Text, r, c);
-    
-      for i:=1 to 20 do
-      begin
-        T[i]:=Random(r);
-    
-        Memo1.Lines.Add('x' + FloatToStr(i) + ':  ' + FloatToStr(T[i]));
-      end;
-    
-      for i:=1 to 20 do
-      begin
-        if (T[i]>=3) and (T[i] mod 3 = 0) then
-          begin
-          Memo1.Lines.Add('кратные 2: x' + IntToStr(i) + ' = ' + FloatToStr(T[i]));
-          end;
-      end;
-    end;
+    title: 'S = {s1, s2 , … s12} алфавиті бар жадcыз дискретті ақпарат көздері үшін энтропияны, тиімділікті және артықтықты анықтау. Дискретті ақпарат көздерінің хабарлама символдарының пайда болу ықтималдығы кестеде келтірілген. 0,02 0,11 0,12 0,01 0,09 0,15 0,08 0,13 0,04 0,14 0,06 0,05',
+    answer: `H=-(0.02*log0.02+0.11*log0.11+0.12*log0.12+0.01*log0.01+0.09*log0.09+0.15*log0.15 +0.08*log0.08+0.13*log0.13+0.04*log0.04+0.14*log0.14+0.06*log0.06+0.05*log0.05)= 
+    3.3365 бит/сим
+    Hmax=log12=3.585 бит/сим
+    E=H/Hmax=3.3365/3.585=0.93
+    R=1-E=1-0.93=0.07
     `,
   },
   {
-    title: 'Матрица В состоит из символических элементов размером 5x5. Выведите на печать элементы первого столбца',
-    answer: `var
-    Form22: TForm22;
-    r,c: integer;
-    S: real;
-    B:array [0..4,0..4] of integer;
-    i,j:integer;
-  implementation
-  {$R *.dfm}
-  
-  procedure TForm22.Button1Click(Sender: TObject);
-  begin
-     val(Edit1.Text, r, c);
-  
-     for i := 0 to 4 do begin
-         for j := 0 to 4 do begin
-             B[i,j]:=Random(r)-10;
-             stringgrid1.Cells[i,j]:=inttostr(B[i,j]);
-         end;
-     end;
-  end;
-  
-  procedure TForm22.Button2Click(Sender: TObject);
-  begin
-      S := 0;
-     for i := 0 to 4 do begin
-         for j := 0 to 4 do begin
-               if i = 0 then Memo1.Lines.Add(FloatToStr(B[i,j]));
-         end;
-     end;
-  end;
-  `,
-  },
-  {
-    title: 'Массив Аі состоит из 15 элементов. Найдите произведение квадратов положительных элементов',
-    answer: `procedure TForm24.Button1Click(Sender: TObject);
-    var
-      S: real;
-      r,c: integer;
-      A:array [1..15] of integer;
-      i:integer;
-    begin
-      val(Edit1.Text, r, c);
-      S := 1;
-      for i:=1 to 15 do
-      begin
-        A[i]:=Random(r)-15;
-    
-        Memo1.Lines.Add('x' + FloatToStr(i) + ':  ' + FloatToStr(A[i]));
-      end;
-    
-      for i:=1 to 15 do
-      begin
-        if A[i]>0 then S := S * Power(A[i],2);
-      end;
-    Memo1.Lines.Add('произведение квадратов положительных элементов'+ ' = ' +FloatToStr(S));
-    end;
+    title: 'Хаффман әдісі арқылы берілген символдардың тағайындалған ықтималдығы үшін тиімді кодты алу. 0,07 0,14 0,04 0,02 0,08 0,15 0,10 0,12 0,03 0,11 0,05 0,09',
+    answer: `
+    si |1   |2   |3   |4   |5   |6   |7   |8   |9   |10  |11  |12
+    S3 |0.15|0.15|0.15|0.15|0.17|0.19|0.23|0.26|0.32|0.42|0.58|1
+    S7 |0.14|0.14|0.14|0.14|0.15|0.17|0.19|0.23|0.26|0.32|0.42
+    S11|0.12|0.12|0.12|0.12|0.14|0.15|0.17|0.19|0.23|0.26
+    S6 |0.11|0.11|0.11|0.12|0.12|0.14|0.15|0.17|0.19
+    S5 |0.10|0.10|0.10|0.11|0.12|0.12|0.14|0.15
+    S2 |0.09|0.09|0.09|0.10|0.11|0.12|0.12
+    S10|0.08|0.08|0.09|0.09|0.10|0.11
+    S8 |0.07|0.07|0.08|0.09|0.09
+    S9 |0.05|0.05|0.07|0.08
+    S12|0.04|0.05|0.05
+    S4 |0.03|0.04
+    S1 |0.02
     `,
   },
   {
-    title: 'Дана матрица В (7, 7). Вычислите сумму элементов',
-    answer: `var
-    Form22: TForm22;
-    r,c: integer;
-    S: real;
-    B:array [0..6,0..6] of integer;
-    i,j:integer;
-    implementation
-    {$R *.dfm}
-    
-    procedure TForm22.Button1Click(Sender: TObject);
-    begin
-      val(Edit1.Text, r, c);
-    
-      for i := 0 to 6 do begin
-          for j := 0 to 6 do begin
-              B[i,j]:=Random(r)-10;
-              stringgrid1.Cells[i,j]:=inttostr(B[i,j]);
-          end;
-      end;
-    end;
-    
-    procedure TForm22.Button2Click(Sender: TObject);
-    begin
-        S := 0;
-      for i := 0 to 6 do begin
-          for j := 0 to 6 do begin
-                S := S + B[i,j];
-          end;
-      end;
-      Memo1.Lines.Add(FloatToStr(S));
-    end;
-  `,
-  },
-  {
-    title: 'Массив N (10) состоит из целых чисел. Вычислить сумму элементов кратные 2',
-    answer: `procedure TForm24.Button1Click(Sender: TObject);
-      var
-        S: real;
-        r,c: integer;
-        N:array [1..10] of integer;
-        i:integer;
-      begin
-        val(Edit1.Text, r, c);
-      
-        for i:=1 to 10 do
-        begin
-          N[i]:=Random(r);
-      
-          Memo1.Lines.Add('x' + FloatToStr(i) + ':  ' + FloatToStr(N[i]));
-        end;
-      
-        for i:=1 to 10 do
-        begin
-          if (N[i]>=2) and (N[i] mod 2 = 0) then
-            begin
-            Memo1.Lines.Add('кратные 2: x' + IntToStr(i) + ' = ' + FloatToStr(N[i]));
-            end;
-        end;
-      end;
+    title: 'Екілік кодтық сөз үшін Хэмминг кодын алу қажет:  x ̅ = 011111',
+    answer: `m=6; k=log2((m+1)+log2(m+1))=log2((6+1)+log2(6+1))=4; n=10;
+   
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10
+    k1|k2|m1|k3|m2|m3|m4|k4|m5|m6
+      |  | 0|  |1 |1 |1 |  |1 |1 
+
+    S1=x1⊕x3⊕x5⊕x7⊕x9=x1⊕0⊕1⊕1⊕1=0; x1=k1=1;
+    S2=x2⊕x3⊕x6⊕x7⊕x10=x2⊕0⊕1⊕1⊕1=0; x2=k2=1;
+    S3=x4⊕x5⊕x6⊕x7=x4⊕1⊕1⊕1=0; x4=k3=1;
+    S4=x8x9⊕x10=x8⊕1⊕1=0; x8=k4=0;
+    XH=1101111011
     `,
   },
   {
-    title: 'Дана матрица R (5, 5). Найдите в элементах матрицы числа кратные 7 и выведите на печать',
-    answer: `var
-    Form22: TForm22;
-    r,c: integer;
-    S: real;
-    R1:array [0..4,0..4] of integer;
-    i,j:integer;
-    implementation
-    {$R *.dfm}
-    
-    procedure TForm22.Button1Click(Sender: TObject);
-    begin
-      val(Edit1.Text, r, c);
-    
-      for i := 0 to 4 do begin
-          for j := 0 to 4 do begin
-              R1[i,j]:=Random(r);
-              stringgrid1.Cells[i,j]:=inttostr(R1[i,j]);
-          end;
-      end;
-    end;
-    
-    procedure TForm22.Button2Click(Sender: TObject);
-    begin
-        S := 0;
-      for i := 0 to 4 do begin
-          for j := 0 to 4 do begin
-                if (R1[i,j] mod 7 = 0) and (R1[i,j]>=7) then
-                begin
-                    Memo1.Lines.Add('кратные 7: x' + ' = ' +  FloatToStr(R1[i,j]));
-                end;
-          end;
-      end;
-    end;
-  `,
-  },
-  {
-    title: 'Дан массив N(10). Вычислите произведение положительных и отрицательных элементов по отдельности',
-    answer: `procedure TForm24.Button1Click(Sender: TObject);
-      var
-        S: real;
-        r,c: integer;
-        N:array [1..10] of integer;
-        i:integer;
-      begin
-        val(Edit1.Text, r, c);
-        S := 1;
-        for i:=1 to 10 do
-        begin
-          N[i]:=Random(r)-25;
+    title: 'Екілік кодтық сөз үшін Хэмминг кодын алу қажет:  x ̅ = 0111011',
+    answer: `m=7; k=log2((m+1)+log2(m+1))=log2((6+1)+log2(6+1))=4; n=11;
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11
+    k1|k2|m1|k3|m2|m3|m4|k4|m5|m6 |m7
+      |  |0 |  |1 |1 |1 |  |0 |1  |1
+      ⊕
+      S1=x1x3x5x7x9x11=x101101=0; x1=k1=0;
+      S2=x2x3x6x7x10x11=x201111=0; x2=k2=0;
+      S3=x4x5x67=x4111=0; x4=k4=1;
+      S4=x8x9x10x11=x8011=0; x8=k4=0;
+      XH=00011110011
       
-          Memo1.Lines.Add('x' + FloatToStr(i) + ':  ' + FloatToStr(N[i]));
-        end;
-      
-        for i:=1 to 10 do
-        begin
-          if N[i]>0 then S := S * N[i];
-        end;
-        Memo1.Lines.Add('произведение положительных' + ' = ' + FloatToStr(S));
-      
-      
-        for i:=1 to 10 do
-        begin
-          if N[i]<0 then S := S * N[i];
-      
-        end;Memo1.Lines.Add('произведение отрицательных' + ' = ' + FloatToStr(S));
-      end;
     `,
   },
   {
-    title: 'Дана матрица Д(К, N). Матрица символического типа. Вывести на печать элементы главного диагонала',
-    answer: `procedure TForm1.Button1Click(Sender: TObject);
-    const n=10;
-    const m=10;
-      var a:array[1..n,1..m] of char;
-     i,j:integer;
-    begin
-          randomize;
-          sum:=0;
-          for i:=1 to n do
-            for j:=1 to m do
-              for i:=1 to n do a[i,j]:= chr(Random(9));
-          for i:=1 to n do  
-             label1.Caption:=IntToStr(a[i,i]);
-     end;
+    title: 'Екілік кодтық сөз үшін Хэмминг кодын алу қажет:  x ̅ = 1110011',
+    answer: ` m=7; k=log2((m+1)+log2(m+1))=log2((6+1)+log2(6+1))=4; n=11;
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11
+    k1|k2|m1|k3|m2|m3|m4|k4|m5|m6 |m7
+      |  |1 |  |1 |1 |0 |  |0 |1  |1
+    ⊕
+    S1=x1x3x5x7x9x11=x111001=0; x1=k1=1;
+    S2=x2x3x6x7x10x11=x211011=0; x2=k2=0;
+    S3=x4x5x6x7=x4110; x4=k4=0;
+    S4=x8x9x10x11=x8011=0; x8=k4=0;
+    XH=10101100011
     `,
   },
   {
-    title: 'Дан  массив  Q(27). Найдите и распечатайте отрицательные элементы',
-    answer: `procedure TForm24.Button1Click(Sender: TObject);
-      var
-        r,c: integer;
-        Q:array [1..27] of integer;
-        i:integer;
-      begin
-        val(Edit1.Text, r, c);
-      
-        for i:=1 to 27 do
-        begin
-          Q[i]:=Random(r)-27;
-      
-          Memo1.Lines.Add('x' + FloatToStr(i) + ':  ' + FloatToStr(Q[i]));
-        end;
-      
-        for i:=1 to 27 do
-        begin
-          if Q[i]<0 then
-            begin
-            Memo1.Lines.Add('отрицательные элементы'+ FloatToStr(Q[i]));
-            end;
-        end;
-      end;
+    title: 'Екілік кодтық сөз үшін Хэмминг кодын алу қажет:  x ̅ = 011101',
+    answer: `m=6; k=log2((m+1)+log2(m+1))=log2((6+1)+log2(6+1))=4; n=10;
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10
+    k1|k2|m1|k3|m2|m3|m4|k4|m5|m6
+      |  |0 |  |1 |1 |1 |  |0 |1
+
+    ⊕
+    S1=x1x3x5x7x9=x10110=0; x1=k1=0;
+    S2=x2x3x6x7x10=x20111=0; x2=k2=1;
+    S3=x4x5x6x7=x4111=0; x4=k3=1;
+    S4=x8x9x10=x801=0; x8=k4=1;
+    XH=0101111101
     `,
   },
   {
-    title: 'Матрица N (10, 15) состоит из элементов целого типа. Вычислить произведение элементов',
-    answer: `procedure TForm22.Button1Click(Sender: TObject);
-      begin
-        val(Edit1.Text, r, c);
-        S := 1;
-        for i := 0 to 9 do begin
-            for j := 0 to 14 do begin
-                N[i,j]:=Random(r)+1;
-                stringgrid1.Cells[i,j]:=inttostr(N[i,j]);
-      
-            end;
-        end;
-      
-      end;
-      
-      procedure TForm22.Button2Click(Sender: TObject);
-      begin
-          S := 1;
-        for i := 0 to 9 do begin
-            for j := 0 to 14 do begin
-                S := S * N[i,j];
-            end;
-        end;
-          Memo1.Lines.Add(FloatToStr(S));
-      end;
+    title: 'Екілік кодтық сөз үшін Хэмминг кодын алу қажет:  x ̅ = 11100111',
+    answer: `m=8; k=log2((m+1)+log2(m+1))=log2((6+1)+log2(6+1))=4; n=12;
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11|x12
+    k1|k2|m1|k3|m2|m3|m4|k4|m5|m6 |m7 |m8
+      |  |1 |  |1 |1 |0 |  |0 |1  |1  |1
+    ⊕
+    S1=x1x3x5x7x9x11=x111001=0; x1=k1=1;
+    S2=x2x3x6x7x10x11=x211011=0; x2=k2=0;
+    S3=x4x5x6x7x12=x41101=0; x4=k3=1;
+    S4=x8x9x10x11х12=x80111=0; x8=k4=1;
+    XH=10111101011
     `,
   },
   {
-    title: 'Массив Q (20) состоит из элементов целого типа. Напечатать элементы кратные 2 и кратные 3',
-    answer: `procedure TForm24.Button1Click(Sender: TObject);
-      var
-        S: real;
-        r,c: integer;
-        Q:array [1..20] of integer;
-        i:integer;
-      begin
-        val(Edit1.Text, r, c);
-      
-        for i:=1 to 20 do
-        begin
-          Q[i]:=Random(r);
-      
-          Memo1.Lines.Add('x' + FloatToStr(i) + ':  ' + FloatToStr(Q[i]));
-        end;
-      
-        for i:=1 to 20 do
-        begin
-          if (Q[i]>=2) and (Q[i] mod 2 = 0) and (Q[i] mod 3 = 0) then
-            begin
-            Memo1.Lines.Add('кратные 2 и 3: x' + IntToStr(i) + ' = ' + FloatToStr(Q[i]));
-            end;
-        end;
-      end;
+    title: 'Екілік кодтық сөз үшін Хэмминг кодын алу қажет:  x ̅ = 01110011',
+    answer: `m=8; k=log2((m+1)+log2(m+1))=log2((6+1)+log2(6+1))=4; n=12;
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11|x12
+    k1|k2|m1|k3|m2|m3|m4|k4|m5|m6 |m7 |m8
+      |  |0 |  |1 |1 |1 |  |0 |0  |1  |1
+    ⊕
+    S1=x1x3x5x7x9x11=x101101=0; x1=k1=1;
+    S2=x2x3x6x7x10x11=x201101=0; x2=k2=1;
+    S3=x4x5x6x7x12=x41111=0; x4=k3=0;
+    S4=x8x9x10x11х12=x80011=0; x8=k4=0;
+    XH=110011100011
     `,
   },
   {
-    title: 'Дан массив А(10). Замените самый первый элемент массива на самый последний элемент',
-    answer: `procedure TForm24.Button1Click(Sender: TObject);
-      var
-        S: real;
-        r,c: integer;
-        A:array [1..10] of integer;
-        i, z:integer;
-      begin
-        val(Edit1.Text, r, c);
-      
-        for i:=1 to 10 do
-        begin
-          A[i]:=Random(r);
-      
-          Memo1.Lines.Add('x' + FloatToStr(i) + ':  ' + FloatToStr(A[i]));
-        end;
-      
-      Memo1.Lines.Add('-----');
-      
-      z := A[1];
-      
-      for i:=1 to 10 do
-        begin
-          if i = 1 then A[1] := A[10];
-      
-          if i = 10 then A[10] := z;
-      
-          Memo1.Lines.Add('x' + FloatToStr(i) + ':  ' + FloatToStr(A[i]));
-        end;
-        Memo1.Lines.Add('-----');
-      end;
+    title: 'Екілік кодтық сөз үшін Хэмминг кодын алу қажет:  x ̅ = 11011111',
+    answer: `m=8; k=log2((m+1)+log2(m+1))=log2((6+1)+log2(6+1))=4; n=12;
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11|x12
+    k1|k2|m1|k3|m2|m3|m4|k4|m5|m6 |m7 |m8
+      |  |1 |  |1 |0 |1 |  |1 |1  |1  |1
+    ⊕
+
+    S1=x1x3x5x7x9x11=x111111=0; x1=k1=1;
+    S2=x2x3x6x7x10x11=x210111=0; x2=k2=0;
+    S3=x4x5x6x7x12=x41011=0; x4=k3=1;
+    S4=x8x9x10x11х12=x81111=0; x8=k4=0;
+    XH=101110101111
     `,
   },
   {
-    title: 'Дана матрица R(M,N) символьного типа. Вычислить сумму элементов',
-    answer: `var
-    Form22: TForm22;
-    r,c: integer;
-    S: real;
-    R1:array [0..9,0..14] of integer;
-    i,j:integer;
-    implementation
-    {$R *.dfm}
+    title: 'Берілген кодтық сөзінің таңбаларының бірінің мәнін ауыстырып, яғни Хэмминг кодтық сөзіне бір қатені енгізу керек. Мысалы, сөздің бесінші символының мәнін 1-ді 0-ге ауыстырып, яғни Х ̅ H = 1101111011 орнына Х ̅ H  = 1101011011 қабылдап, Хэмминг кодтық сөзін декодтау.',
+    answer: `
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10
+    1 |1 |0 |1 |0 |1 |1 |0 |1 |1 
+
+    ⊕
     
-    procedure TForm22.Button1Click(Sender: TObject);
-    begin
-      val(Edit1.Text, r, c);
-      S := 1;
-      for i := 0 to 9 do begin
-          for j := 0 to 14 do begin
-              R1[i,j]:=Random(r)+1;
-              stringgrid1.Cells[i,j]:=inttostr(R1[i,j]);
-    
-          end;
-      end;
-    
-    end;
-    
-    procedure TForm22.Button2Click(Sender: TObject);
-    begin
-        S := 0;
-      for i := 0 to 9 do begin
-          for j := 0 to 14 do begin
-              S := S + R1[i,j];
-          end;
-      end;
-        Memo1.Lines.Add(FloatToStr(S));
-    end;
-  `,
-  },
-  {
-    title: 'Дан   массив  L(10).   Вывести  элементы кратные 5',
-    answer: `procedure TForm24.Button1Click(Sender: TObject);
-    var
-      S: real;
-      r,c: integer;
-      L:array [1..10] of integer;
-      i:integer;
-    begin
-      val(Edit1.Text, r, c);
-    
-      for i:=1 to 10 do
-      begin
-        L[i]:=Random(r);
-    
-        Memo1.Lines.Add('x' + FloatToStr(i) + ':  ' + FloatToStr(L[i]));
-      end;
-    
-      for i:=1 to 10 do
-      begin
-        if (L[i]>=5) and (L[i] mod 5 = 0) then
-          begin
-          Memo1.Lines.Add('кратные 5: x' + IntToStr(i) + ' = ' + FloatToStr(L[i]));
-          end;
-      end;
-    end;
+    S1=x1x3x5x7x9=10011=1;
+    S2=x2x3x6x7x10=10111=0
+    S3=x4x5x6x7=1011=1
+    S4=x8x9x10=011=0
+    S4S3S2S1=0101
+    0101_2=0*2^3+1*2^2+0*2^1+1*2^0=5
     `,
   },
   {
-    title: 'Массив А состоит из 10 элементов. Элементы целочисленного типа. Напечатать элементы, кратные 7',
-    answer: `procedure TForm24.Button1Click(Sender: TObject);
-    var
-      S: real;
-      r,c: integer;
-      A:array [1..10] of integer;
-      i:integer;
-    begin
-      val(Edit1.Text, r, c);
-    
-      for i:=1 to 10 do
-      begin
-        A[i]:=Random(r);
-    
-        Memo1.Lines.Add('x' + FloatToStr(i) + ':  ' + FloatToStr(A[i]));
-      end;
-    
-      for i:=1 to 10 do
-      begin
-        if (A[i]>=7) and (A[i] mod 7 = 0) then
-          begin
-          Memo1.Lines.Add('кратные 7: x' + IntToStr(i) + ' = ' + FloatToStr(A[i]));
-          end;
-      end;
-    end;
+    title: 'Х ̅ H = 1101111011 сөзіне арналған кеңейтілген Хэмминг сөзін алу қажет. Ол үшін берілген кодтық сөздің соңына жұптық битін қосамыз. Бір қатені табу және түзету үшін кеңейтілген Хемминг кодтық сөзін алу және декодтау.',
+    answer: `Кеңейтілген Хэмминг коды: 𝑥̅HE=11011110110
+    Бірлік қате: 11011110(0)10
+    x1|x2|x3|x4|x5|x6|x7|x8|(x9)|x10|x11
+    1 |1 |0 |1 |1 |1 |1 |0 |(0) |1  |0
+
+    s1 = х1  х3  х5  х7  х9  х11= 0;
+    s1 = 1  0  1  1  0  0 = 1
+    s2 = х2  х3  х6  х7  х10  х11 = 0
+    s2 = 1  0  1  1  1  0 = 0
+    s3 = х4  х5  х6  х7 = 0
+    s3 = 1  1  1  1 = 0
+    s4 = x8  x9  x10  x11 = 0
+    s4 = 0  0  1  0 = 1
+    s4s3s2s1 = 1001
+    1001_2 = 1∙2^3+0∙2^2+0∙2^1+1∙2^0 = 8+0+0+1 = 9_10
     `,
+  },
+  {
+    title: 'Екі қатені табу. Бұл кодтық сөзге екі қате енгіземіз, ол бесінші және сегізінші таңбалардың мәнін өзгертеді. Қате алынған кодтық сөз мына түрде болады: 11010111110',
+    answer: `
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11
+    1 |1 |0 |1 |0 |1 |1 |1 |1 |1  |0
+    S1=x1x3x5x7x9x11=100110=1
+    S2=x2x3x6x7x10x11=101110=0
+    S3=x4x5x6x7=1011=1
+    S4=x8x9x10x11=1110=1
+    S4S3S2S1=1101
+    11012=1*23+1*22+0*21+1*20=13
+    5+8=13
+    `,
+  },
+  {
+    title: '0111010 1101010 0101011',
+    answer: `
+    1) 0111010
+    m=7
+    k=log 2 ((m+1)+log 2 (m+1))=log 2 ((7+1)+log 2 (7+1))=log 2 11=4
+    n=m+k=7+4=11
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11
+    k1|k2|m1|k3|m2|m3|m4|k4|m5|m6 |m7 
+      |  |0 |  |1 |1 |1 |  |0 |1  |0 
+
+    s1 = х1 х3 х5 х7x9x11 = 0;
+    s1 = x1 0  1  1  0  0 = x1 0=0     k1=x1=0
+    s2 = х2  х3 х6 х7x10x11 = 0
+    s2 = x2 0  1  1  1  0 = x2  1 = 0    k2=x2=1
+    s3 = х4 х5 х6 х7 = 0
+    s3 = x4 1  1  1 = x41 = 0    k3=x4=1
+    s4 = x8 x9 x10 x11 = 0
+    s4 = x8 0  1  0 = x8  1 = 0    k4=x8=1
+    XH=01011111010
+    
+    2) 1101010
+    m=7
+    k=log 2 ((m+1)+log 2 (m+1))=log 2 ((7+1)+log 2 (7+1))=log 2 11=4
+    n=m+k=7+4=11
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11
+    k1|k2|m1|k3|m2|m3|m4|k4|m5|m6 |m7 
+      |  |1 |  |1 |0 |1 |  |0 |1  |0 
+
+    s1 = х1 х3 х5 х7x9x11 = 0;
+    s1 = x1 1  1  1  0  0 = x1 1=0     k1=x1=1
+    s2 = х2  х3 х6 х7x10x11 = 0
+    s2 = x2 1  0  1  1  0 = x2  1 = 0    k2=x2=1
+    s3 = х4 х5 х6 х7 = 0
+    s3 = x4 1  0  1 = x40 = 0    k3=x4=0
+    s4 = x8 x9 x10 x11 = 0
+    s4 = x8 0  1  0 = x8  1 = 0    k4=x8=1
+    XH=11101011010
+    
+    3) 0101011
+    m=7
+    k=log 2 ((m+1)+log 2 (m+1))=log 2 ((7+1)+log 2 (7+1))=log 2 11=4
+    n=m+k=7+4=11
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11
+    k1|k2|m1|k3|m2|m3|m4|k4|m5|m6 |m7 
+      |  |0 |  |1 |0 |1 |  |0 |1  |1
+    
+    s1 = х1 х3 х5 х7x9x11 = 0
+    s1 = x1 0  1  1  0  1 = x1 1=0     k1=x1=1
+    s2 = х2  х3 х6 х7x10x11 = 0
+    s2 = x2 0  0  1  1  1 = x2  1 = 0    k2=x2=1
+    s3 = х4 х5 х6 х7 = 0
+    s3 = x4 1  0  1 = x40 = 0    k3=x4=0
+    s4 = x8 x9 x10 x11 = 0
+    s4 = x8 0  1  1 = x8  0 = 0    k4=x8=0
+    XH=11001010011
+    `,
+  },
+  {
+    title: '0001010 0001101 0010001',
+    answer: `
+    1) 0001010
+    m=7
+    k=log2 ((m+1)+log 2 (m+1))=log 2 ((7+1)+log 2 (7+1))=log 2 11=4
+    n=m+k=7+4=11
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11
+    k1|k2|m1|k3|m2|m3|m4|k4|m5|m6 |m7 
+      |  |0 |  |0 |0 |1 |  |0 |1  |0
+    
+    s1 = х1 х3 х5 х7x9x11 = 0;
+    s1 = x1 0  0  1 0  0 = x1 1=0     k1=x1=1
+    s2 = х2  х3 х6 х7x10x11 = 0
+    s2 = x2 0  0  1  1  0 = x2 0 = 0    k2=x2=0
+    s3 = х4 х5 х6 х7 = 0
+    s3 = x4 0  0  1 = x4 1 = 0    k3=x4=1
+    s4 = x8 x9 x10 x11 = 0
+    s4 = x8 0  1  0 = x8  1 = 0    k4=x8=1
+    𝑥̅H=10010011010
+    
+    2) 0001101
+    m=7
+    k=log 2 ((m+1)+log 2 (m+1))=log 2 ((7+1)+log 2 (7+1))=log 2 11=4
+    n=m+k=7+4=11
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11
+    k1|k2|m1|k3|m2|m3|m4|k4|m5|m6 |m7 
+      |  |0 |  |0 |0 |1 |  |1 |0  |1
+
+    s1 = х1 х3 х5 х7x9x11 = 0;
+    s1 = x1 0  0  1 1  1 = x1 1=0     k1=x1=1
+    s2 = х2  х3 х6 х7x10x11 = 0
+    s2 = x2 0  0  1  0  1 = x2 0 = 0    k2=x2=0
+    s3 = х4 х5 х6 х7 = 0
+    s3 = x4 0  0  1 = x4 1 = 0    k3=x4=1
+    s4 = x8 x9 x10 x11 = 0
+    s4 = x8 1  0  1 = x8  0 = 0    k4=x8=0
+    𝑥̅H=10010010101
+
+    3) 0010001
+    m=7
+    k=log 2 ((m+1)+log 2 (m+1))=log 2 ((7+1)+log 2 (7+1))=log 2 11=4
+    n=m+k=7+4=11
+    
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11
+    k1|k2|m1|k3|m2|m3|m4|k4|m5|m6 |m7 
+      |  |0 |  |0 |1 |0 |  |0 |0  |1
+
+    s1 = х1 х3 х5 х7x9x11 = 0;
+    s1 = x1 0  0  0 0  1 = x1 1=0     k1=x1=1
+    s2 = х2  х3 х6 х7x10x11 = 0
+    s2 = x2 0  1  0  0  1 = x2 0 = 0    k2=x2=0
+    s3 = х4 х5 х6 х7 = 0
+    s3 = x4 0  1  0 = x4 1 = 0    k3=x4=1
+    s4 = x8 x9 x10 x11 = 0
+    s4 = x8 0  0  1 = x8  1 = 0    k4=x8=1
+    𝑥̅H=10010101001
+    `,
+  },
+  {
+    title: '0010100 0011000 0011101',
+    answer: `
+    1) 0010100
+    m=7
+    k=log 2 ((m+1)+log 2 (m+1))=log 2 ((7+1)+log 2 (7+1))=log 2 11=4
+    n=m+k=7+4=11
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11
+    k1|k2|m1|k3|m2|m3|m4|k4|m5|m6 |m7 
+      |  |0 |  |0 |1 |0 |  |1 |0  |0
+
+    s1 = х1 х3 х5 х7x9x11 = 0;
+    s1 = x1 0  0  0 1  0 = x1 1=0     k1=x1=1
+    s2 = х2  х3 х6 х7x10x11 = 0
+    s2 = x2 0  1  0  0  0 = x2 1 = 0    k2=x2=1
+    s3 = х4 х5 х6 х7 = 0
+    s3 = x4 0  1  0 = x41 = 0    k3=x4=1
+    s4 = x8 x9 x10 x11 = 0
+    s4 = x8 1  0  0 = x8  1 = 0    k4=x8=1
+    𝑥̅H=11010101100
+
+    2) 0011000
+    m=7
+    k=log 2 ((m+1)+log 2 (m+1))=log 2 ((7+1)+log 2 (7+1))=log 2 11=4
+    n=m+k=7+4=11
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11
+    k1|k2|m1|k3|m2|m3|m4|k4|m5|m6 |m7 
+      |  |0 |  |0 |1 |1 |  |0 |0  |0
+    
+    s1 = х1 х3 х5 х7x9x11 = 0;
+    s1 = x1 0  0  1 0  0 = x1 1=0     k1=x1=1
+    s2 = х2  х3 х6 х7x10x11 = 0
+    s2 = x2 0  1  1  0  0 = x2 0 = 0    k2=x2=0
+    s3 = х4 х5 х6 х7 = 0
+    s3 = x4 0  1  1 = x4 0 = 0    k3=x4=0
+    s4 = x8 x9 x10 x11 = 0
+    s4 = x8 0  0  0 = x8  0 = 0    k4=x8=0
+    𝑥̅H=10000110000
+
+    3) 0011101
+    m=7
+    k=log 2 ((m+1)+log 2 (m+1))=log 2 ((7+1)+log 2 (7+1))=log 2 11=4
+    n=m+k=7+4=11
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11
+    k1|k2|m1|k3|m2|m3|m4|k4|m5|m6 |m7 
+      |  |0 |  |0 |1 |1 |  |1 |0  |1
+
+    s1 = х1 х3 х5 х7x9x11 = 0;
+    s1 = x1 0  0  1 1  1 = x11=0     k1=x1=1
+    s2 = х2  х3 х6 х7x10x11 = 0
+    s2 = x2 0  1  1  0  1 = x21 = 0    k2=x2=1
+    s3 = х4 х5 х6 х7 = 0
+    s3 = x4 0  1  1 = x40 = 0    k3=x4=0
+    s4 = x8 x9 x10 x11 = 0
+    s4 = x8 1  0  1 = x8  0 = 0    k4=x8=0
+    𝑥̅H=11000110101
+    `,
+  },
+  {
+    title: '0011110 0110000 0100010',
+    answer: `
+    1) 0011110
+    m=7
+    k=log 2 ((m+1)+log 2 (m+1))=log 2 ((7+1)+log 2 (7+1))=log 2 11=4
+    n=m+k=7+4=11
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11
+    k1|k2|m1|k3|m2|m3|m4|k4|m5|m6 |m7 
+      |  |0 |  |0 |1 |1 |  |1 |1  |0
+
+    s1 = х1 х3 х5 х7x9x11 = 0;
+    s1 = x1 0  0  1 1  0 = x1 0=0     k1=x1=0
+    s2 = х2  х3 х6 х7x10x11 = 0
+    s2 = x2 0  1  1  1  0 = x2 1 = 0    k2=x2=1
+    s3 = х4 х5 х6 х7 = 0
+    s3 = x4 0  1  1 = x4 0 = 0    k3=x4=0
+    s4 = x8 x9 x10 x11 = 0
+    s4 = x8 1  1  0 = x8  0 = 0    k4=x8=0
+    𝑥̅H=01000110110
+
+    2) 0110000
+    m=7
+    k=log 2 ((m+1)+log 2 (m+1))=log 2 ((7+1)+log 2 (7+1))=log 2 11=4
+    n=m+k=7+4=11
+      
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11
+    k1|k2|m1|k3|m2|m3|m4|k4|m5|m6 |m7 
+      |  |0 |  |1 |1 |0 |  |0 |0  |0
+
+    s1 = х1 х3 х5 х7 ... = 0;
+    s1 = x10 1  0 0  0 = x11 =0     k1=x1=1
+    s2 = х2  х3 х6 х7 ... = 0
+    s2 = x2 0  1  0  0  0 = x2 1 = 0    k2=x2=1
+    s3 = х4 х5 х6 х7 ... = 0
+    s3 = x4 1 1 0 = x4 0 = 0    k3=x4=0
+    s4 = x8 x9 x10 x11 ... = 0
+    s4 = x8 0  0 0 = x8  0 = 0    k4=x8=0
+    𝑥̅H=11001100000
+    
+    3) 0100010
+    m=7
+    k=log 2 ((m+1)+log 2 (m+1))=log 2 ((7+1)+log 2 (7+1))=log 2 11=4
+    n=m+k=7+4=11
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11
+    k1|k2|m1|k3|m2|m3|m4|k4|m5|m6 |m7 
+      |  |0 |  |1 |0 |0 |  |0 |1  |0
+    
+    s1 = х1 х3 х5 х7 ... = 0;
+    s1 = x10100 0 = x11 =0     k1=x1=1
+    s2 = х2  х3 х6 х7 ... = 0
+    s2 = x2 0  0  0  1  0 = x2 0 = 0    k2=x2=0
+    s3 = х4 х5 х6 х7 ... = 0
+    s3 = x4 1  0  0 = x4 1 = 0    k3=x4=1
+    s4 = x8 x9 x10 x11 ... = 0
+    s4 = x8 0  1  0 = x8  1 = 0    k4=x8=1
+    𝑥̅H=11011001010
+    `,
+  },
+  {
+    title: '1100011 0001111 0011101',
+    answer: `
+    1) 1100011
+    m=7
+    k=log 2 ((m+1)+log 2 (m+1))=log 2 ((7+1)+log 2 (7+1))=log 2 11=4
+    n=m+k=7+4=11
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11
+    k1|k2|m1|k3|m2|m3|m4|k4|m5|m6 |m7 
+      |  |1 |  |1 |0 |0 |  |0 |1  |1
+
+    s1 = х1 х3 х5 х7x9x11 = 0;
+    s1 = x1 1  1  0  0  1 = x1 1=0     k1=x1=1
+    s2 = х2  х3 х6 х7x10x11 = 0
+    s2 = x2 1  0  0  1  1 = x2 1 = 0    k2=x2=1
+    s3 = х4 х5 х6 х7 = 0
+    s3 = x4 1  0  0 = x4 1 = 0    k3=x4=1
+    s4 = x8 x9 x10 x11 = 0
+    s4 = x8 0  1  1 = x8  0 = 0    k4=x8=0
+    𝑥̅H=11111000011
+
+    2) 0001111
+    m=7
+    k=log 2 ((m+1)+log 2 (m+1))=log 2 ((7+1)+log 2 (7+1))=log 2 11=4
+    n=m+k=7+4=11
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11
+    k1|k2|m1|k3|m2|m3|m4|k4|m5|m6 |m7 
+      |  |0 |  |0 |0 |1 |  |1 |1  |1
+
+    s1 = х1 х3 х5 х7x9x11 = 0;
+    s1 = x1 0  0  1  1  1 = x1 1=0     k1=x1=1
+    s2 = х2  х3 х6 х7x10x11 = 0
+    s2 = x2 0  0  1  1  1 = x2 1 = 0    k2=x2=1
+    s3 = х4 х5 х6 х7 = 0
+    s3 = x4 0  0  1 = x4 1 = 0    k3=x4=1
+    s4 = x8 x9 x10 x11 = 0
+    s4 = x8 1  1  1 = x8  1 = 0    k4=x8=1
+    𝑥̅H=11010011111
+
+    3) 0011101
+    m=7
+    k=log 2 ((m+1)+log 2 (m+1))=log 2 ((7+1)+log 2 (7+1))=log 2 11=4
+    n=m+k=7+4=11
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11
+    k1|k2|m1|k3|m2|m3|m4|k4|m5|m6 |m7 
+      |  |0 |  |0 |1 |1 |  |1 |0  |1
+
+    s1 = х1 х3 х5 х7x9x11 = 0;
+    s1 = x1 0  0  1  1  1 = x1 1=0     k1=x1=1
+    s2 = х2  х3 х6 х7x10x11 = 0
+    s2 = x2 0  1  1  0  1 = x2 1 = 0    k2=x2=1
+    s3 = х4 х5 х6 х7 = 0
+    s3 = x4 0  1  1 = x4 0 = 0    k3=x4=0
+    s4 = x8 x9 x10 x11 = 0
+    s4 = x8 1  0  1 = x8  0 = 0    k4=x8=0
+    𝑥̅H=11000110101      
+    `,
+  },
+  {
+    title: '1001010 0011001 0100010',
+    answer: `1) 1001010
+    m=7
+    k=log 2 ((m+1)+log 2 (m+1))=log 2 ((7+1)+log 2 (7+1))=log 2 11=4
+    n=m+k=7+4=11
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11
+    k1|k2|m1|k3|m2|m3|m4|k4|m5|m6 |m7 
+      |  |1 |  |0 |0 |1 |  |0 |1  |0
+
+    s1 = х1 х3 х5 х7x9x11 = 0;
+    s1 = x1 1  0  1  0  0 = x1 0=0     k1=x1=0
+    s2 = х2  х3 х6 х7x10x11 = 0
+    s2 = x2 1  0  1  1  0 = x2 1 = 0    k2=x2=1
+    s3 = х4 х5 х6 х7 = 0
+    s3 = x4 0  0  1 = x4 1 = 0    k3=x4=1
+    s4 = x8 x9 x10 x11 = 0
+    s4 = x8 0  1  0 = x8  1 = 0    k4=x8=1
+    𝑥̅H=01(1)10011010
+    01(0)10011010
+
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11
+    0|1 |0 |1 |0 |0 |1 |1 |0 |1  |0 
+
+    s1 = х1  х3  х5  х7  х9  х11 … = 0;
+    s1 = 0  0  0  1  0  0 = 1
+    s2 = х2  х3  х6  х7  х10  х11 …  = 0
+    s2 = 1  0  0  1  1  0 = 1
+    s3 = х4  х5  х6  х7  ... = 0
+    s3 = 1  0  0  1 = 0
+    s4 = x8  x9  x10  x11  ... = 0
+    s4 = 1  0  1  0 = 0
+    s4s3s2s1 = 0011
+    0011_2 = 0∙23+0∙22+1∙21+1∙20 = 0+4+0+0 = 3_10
+
+    2) 0011001
+    m=7
+    k=log 2 ((m+1)+log 2 (m+1))=log 2 ((7+1)+log 2 (7+1))=log 2 11=4
+    n=m+k=7+4=11
+
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11
+    k1|k2|m1|k3|m2|m3|m4|k4|m5|m6 |m7 
+      |  |0 |  |0 |1 |1 |  |0 |0  |1
+
+    s1 = х1 х3 х5 х7x9x11 = 0;
+    s1 = x1 0  0  1  0  1 = x1 0=0     k1=x1=0
+    s2 = х2  х3 х6 х7x10x11 = 0
+    s2 = x2 0  1  1  0  1 = x2 1 = 0    k2=x2=1
+    s3 = х4 х5 х6 х7 = 0
+    s3 = x4 0  1  1 = x40 = 0    k3=x4=0
+    s4 = x8 x9 x10 x11 = 0
+    s4 = x8 0  0  1 = x8  1 = 0    k4=x8=1
+    𝑥̅H=0(1)000111001
+    0(0)000111001
+      
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11
+    0 |0 |0 |0 |0 |1 |1 |1 |0 |0  |1
+
+    s1 = х1  х3  х5  х7  х9  х11 … = 0;
+    s1 = 0  0  0  1  0  1 = 0
+    s2 = х2  х3  х6  х7  х10  х11 …  = 0
+    s2 = 0  0  1  1  0  1 = 1
+    s3 = х4  х5  х6  х7  ... = 0
+    s3 = 0  0  1  1 = 0
+    s4 = x8  x9  x10  x11  ... = 0
+    s4 = 1  0  0  1 = 0
+    s4s3s2s1 = 0010
+    0011_2 = 0∙2^3+0∙2^2+1∙2^1+0∙2^0 = 0+0+2+0 = 2_10
+
+    3) 0100010
+    m=7
+    k=log 2 ((m+1)+log 2 (m+1))=log 2 ((7+1)+log 2 (7+1))=log 2 11=4
+    n=m+k=7+4=11
+
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11
+    k1|k2|m1|k3|m2|m3|m4|k4|m5|m6 |m7 
+      |  |0 |  |1 |0 |0 |  |0 |1  |0
+
+    s1 = х1 х3 х5 х7x9x11 = 0;
+    s1 = x1 0  1  0  0  0 = x1 1=0     k1=x1=1
+    s2 = х2  х3 х6 х7x10x11 = 0
+    s2 = x2 0  0  0  1  0 = x2 1 = 0    k2=x2=1
+    s3 = х4 х5 х6 х7 = 0
+    s3 = x4 1  0  0 = x41 = 0    k3=x4=1
+    s4 = x8 x9 x10 x11 = 0
+    s4 = x8 0  1  0 = x8  1 = 0    k4=x8=1
+    𝑥̅H=110(1)1001010
+    110(0)1001010
+
+    x1|x2|x3|x4|x5|x6|x7|x8|x9|x10|x11
+    1 |1 |0 |0 |1 |0 |0 |1 |0 |1  |0
+
+    s1 = х1  х3  х5  х7  х9  х11 … = 0;
+    s1 = 1  0  1  0  0  0 = 0
+    s2 = х2  х3  х6  х7  х10  х11 …  = 0
+    s2 = 1  0  0  0  1  0 = 0
+    s3 = х4  х5  х6  х7  ... = 0
+    s3 = 0  1  0  0 = 1
+    s4 = x8  x9  x10  x11  ... = 0
+    s4 = 1  0  1  0 = 0
+    s4s3s2s1 = 0100
+    0100_2 = 0∙2^3+1∙22+0∙21+0∙20 = 0+4+0+0 = 4_10
+
+    `,
+  },
+  {
+    title: '',
+    answer: ``,
+  },
+  {
+    title: '',
+    answer: ``,
+  },
+  {
+    title: '',
+    answer: ``,
+  },
+  {
+    title: '',
+    answer: ``,
+  },
+  {
+    title: '',
+    answer: ``,
+  },
+  {
+    title: '',
+    answer: ``,
+  },
+  {
+    title: '',
+    answer: ``,
+  },
+  {
+    title: '',
+    answer: ``,
+  },
+  {
+    title: '',
+    answer: ``,
   },
 ];
