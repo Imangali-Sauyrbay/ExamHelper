@@ -1,17 +1,18 @@
 import "@babel/polyfill";
-import fc from './components/FormController';
-import view from './components/SetView';
+import formController from './components/FormController';
+import setView from './components/SetView';
 import answerToggle from './components/AnswerToggle'
-import btnsHandler from './components/GetAllBtnController';
 import requestMiddleware from './middleware/requestMiddleware';
 
 import './index.css';
 
 const container = '.container';
 
-const listener = document.addEventListener('DOMContentLoaded', ()=>{
-  fc('form', requestMiddleware(view(container)));
+const listener = document.addEventListener('DOMContentLoaded', () => {
+  const view = setView(container);
+
+  formController('form', requestMiddleware(view));
   answerToggle(container);
-  btnsHandler(view(container))
+
   document.removeEventListener('DOMContentLoaded', listener);
 })

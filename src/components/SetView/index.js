@@ -12,7 +12,7 @@ function toHtmlElement(item = {}, index = '') {
 
   const titleText = document.createElement('div');
   titleText.classList.add('title');
-  titleText.textContent = `${index + 1}) ${title}`;
+  titleText.innerHTML = `${index + 1}) ${title}`;
 
   const copyButton = document.createElement('button');
   copyButton.classList.add('copy');
@@ -27,7 +27,7 @@ function toHtmlElement(item = {}, index = '') {
 
   const answerText = document.createElement('pre');
   answerText.classList.add('answer_text');
-  answerText.textContent = answer;
+  answerText.innerHTML = answer;
 
   answerWrapper.appendChild(answerText);
   mainWrapper.appendChild(answerWrapper);

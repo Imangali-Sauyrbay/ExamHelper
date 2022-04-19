@@ -1,36 +1,88 @@
 const path = require('path');
-const firstLevel = require(path.resolve(__dirname, '..', 'Answers', 'firstLevel'));
-const secondLevel = require(path.resolve(__dirname, '..', 'Answers', 'secondLevel'));
-const thirdLevel = require(path.resolve(__dirname, '..', 'Answers', 'thirdLevel'));
-const pasteCode = require(path.resolve(__dirname, '..', 'Answers', 'pasteCode'));
+const pasteCode = require(getPath('pasteCode'));
 
+function getPath(file) {
+  return path.resolve(__dirname, '..', 'Answers', file);
+}
 
-const answers = [firstLevel, secondLevel, thirdLevel];
+const history = [
+  ...require(getPath('history.js')),
+  ...require(getPath('history-platonus.js'))
+];
 
-const isIn = (first, second) => first.toLowerCase().includes(second.toLowerCase());
+const ict = [
+  ...require(getPath('ict.js')),
+  ...require(getPath('ict2.js'))
+];
+
+const philosophy = [
+  ...require(getPath('philosophy.js')),
+  ...require(getPath('philosophy-platonus.js'))
+];
+
+const logic = require(getPath('logic.js'));
+
+const answers = [...history, ...philosophy, ...ict, ...logic];
+
 const getErrorMessage = e => [{
   title: 'Error!',
   answer: e.message + '; Попробуй перезагрузить страницу!'
-}]
+}];
+
+const getMatches = (text, arr = []) => arr.filter(({title, answer}) => {
+  const globalRegex = new RegExp(text, 'gi');
+
+  if(title.match(globalRegex) || answer.match(globalRegex)) return true;
+
+  const words = text.split(/\s+/);
+
+  for (let i = 0; i < words.length; i++) {
+    const word = words[i];
+    const regex = new RegExp(word, 'gi');
+    
+    if(title.match(regex) || answer.match(regex)) return true;
+  }
+
+  return false;
+});
+
+const highLight = (str, regex) => str.replace(regex, value => `<span class="hl">${value}</span>`);
+
+const markMatches = (text, arr = []) => arr.map(({title, answer}) => {
+  const globalRegex = new RegExp(text, 'gi');
+  title = highLight(title, globalRegex);
+  answer = highLight(answer, globalRegex);
+
+  const words = text.split(/\s+/);
+  for (let i = 0; i < words.length; i++) {
+    const word = words[i];
+    const regex = new RegExp(word, 'gi');
+    
+    title = highLight(title, regex);
+    answer = highLight(answer, regex);
+  }
+
+  return {title, answer};
+});
 
 class Controller{
 
   async getMatch(req,res){
     try{
-      const text = `${req.body.text}`;
-      if(!text.trim()) return res.json([{title: 'Пустой запрос!', answer: ''}]);
+      const text = String(req.body.text).trim();
 
-      if(text.toLowerCase() === '/all')
-        return res.json(answers.reduce((acc, el) => acc.concat(el),[]));
-      else if(text.toLowerCase() === '/p')
-        return res.json(pasteCode);
+      if(!text) return res.json([{title: 'Пустой запрос!', answer: ''}]);
 
-      const matches = [];
-  
-      answers.forEach(arr => arr.forEach(el=>{
-        if(isIn(el.title, text)) matches.push(el);
-      }))
-  
+      if(text.startsWith('/')){
+        switch(text.toLowerCase()) {
+          case '/all':
+            return res.json(answers);
+          case '/p':
+            return res.json(pasteCode);
+        }
+      }
+
+      const matches = markMatches(text, getMatches(text, answers));
       if(matches.length === 0) matches.push({title: 'Нет Совпадений!', answer: 'Попробуйте искать каждый слог отдельно!'});
   
       res.json(matches);
