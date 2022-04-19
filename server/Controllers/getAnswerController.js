@@ -38,6 +38,8 @@ const getMatches = (text, arr = []) => arr.filter(({title, answer}) => {
 
   for (let i = 0; i < words.length; i++) {
     const word = words[i];
+    if(word.length > 2) continue;
+
     const regex = new RegExp(word, 'gi');
     
     if(title.match(regex) || answer.match(regex)) return true;
@@ -56,6 +58,8 @@ const markMatches = (text, arr = []) => arr.map(({title, answer}) => {
   const words = text.split(/\s+/);
   for (let i = 0; i < words.length; i++) {
     const word = words[i];
+    if(word.length > 2) continue;
+    
     const regex = new RegExp(word, 'gi');
     
     title = highLight(title, regex);
