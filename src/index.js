@@ -14,5 +14,10 @@ const listener = document.addEventListener('DOMContentLoaded', () => {
   formController('form', requestMiddleware(view));
   answerToggle(container);
 
+  const input = document.querySelector('#text');
+  document.querySelector('#searh').addEventListener('click', e => {
+    window.open('https://www.google.com/search?q=' + encodeURI(input.value), '_self');
+  });
+
   document.removeEventListener('DOMContentLoaded', listener);
 })
