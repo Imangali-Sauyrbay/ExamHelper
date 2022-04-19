@@ -1,0 +1,9 @@
+{
+  "name": "examsiman",
+  "short_name": "examsiman",
+  "theme_color": "#53a7ea",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/"
+}
