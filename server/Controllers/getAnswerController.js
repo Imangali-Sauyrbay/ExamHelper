@@ -29,13 +29,17 @@ const getErrorMessage = e => [{
   answer: e.message + '; Попробуй перезагрузить страницу!'
 }];
 
-const getMatches = (text, arr = []) => [
-  ...arr.filter(({title, answer}) => {
+const getMatches = (text, arr = []) => {
+  const globalMatches = [];
+  const wordMathces = [];
+
+  arr.forEach(({title, answer}) => {
+    title = title.trim();
+    answer = answer.trim();
+
     const globalRegex = new RegExp(text, 'gi');
-    if(title.match(globalRegex) || answer.match(globalRegex)) return true;
-    return false;
-  }),
-  ...arr.filter(({title, answer}) => {
+    if(title.match(globalRegex) || answer.match(globalRegex)) globalMatches.push({title, answer});
+
     const words = text.split(/\s+/);
   
     for (let i = 0; i < words.length; i++) {
@@ -44,12 +48,22 @@ const getMatches = (text, arr = []) => [
   
       const regex = new RegExp(word, 'gi');
       
-      if(title.match(regex) || answer.match(regex)) return true;
+      if(title.match(regex) || answer.match(regex)) wordMathces.push({title, answer});
     }
-  
-    return false;
-  })
-];
+  });
+
+  const result = [...globalMatches, ...wordMathces]
+  .reduce((acc, item) => {
+    if(acc.some(el => el.title == item.title && el.answer == item.answer)) {
+      return acc;
+    }
+
+    acc.push(item);
+    return acc;
+  } ,[]);
+
+  return result
+}
 
 const highLight = (str, regex) => str.replace(regex, value => `<span class="hl">${value}</span>`);
 

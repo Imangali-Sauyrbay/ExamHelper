@@ -7,7 +7,9 @@
   padding: 5px;
   margin-top: 5px;
 }
-
+#controllers {
+  display: flex;
+}
 .item .clickable {
   display: flex;
   justify-content: space-between;
