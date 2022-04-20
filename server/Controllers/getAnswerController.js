@@ -1,28 +1,11 @@
 const path = require('path');
 const pasteCode = require(getPath('pasteCode'));
 
-function getPath(file) {
-  return path.resolve(__dirname, '..', 'Answers', file);
+function getPath(file, folder = '') {
+  return path.resolve(__dirname, '..', 'Answers', folder, file);
 }
 
-const history = [
-  ...require(getPath('history.js')),
-  ...require(getPath('history-platonus.js'))
-];
-
-const ict = [
-  ...require(getPath('ict.js')),
-  ...require(getPath('ict2.js'))
-];
-
-const philosophy = [
-  ...require(getPath('philosophy.js')),
-  ...require(getPath('philosophy-platonus.js'))
-];
-
-const logic = require(getPath('logic.js'));
-
-const answers = [...history, ...philosophy, ...ict, ...logic];
+const answers = [...require(getPath('all.js', 'voud-jasi'))];
 
 const getErrorMessage = e => [{
   title: 'Error!',

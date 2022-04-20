@@ -7,19 +7,7 @@
   padding: 5px;
   margin-top: 5px;
 }
-#controllers, #controllers form {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: nowrap;
-}
 
-#controllers input, #controllers form {
-  flex: 1 2;
-}
-
-#controllers button {
-  flex: 0 0;
-}
 .item .clickable {
   display: flex;
   justify-content: space-between;
@@ -76,4 +64,17 @@
 
 .btn_container .btn {
   margin-right: 1px;
+}
+
+#controllers, #controllers form {
+  display: flex;
+  justify-content: flex-start;
+}
+
+#controllers input, #controllers form {
+  flex: 0 2 auto;
+}
+
+#controllers button {
+  flex: 0 0 auto;
 }
