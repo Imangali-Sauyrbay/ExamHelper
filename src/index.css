@@ -19,3 +19,11 @@
 #controllers {
   display: flex;
 }
+
+#controllers > input {
+  flex: 1 2 auto;
+}
+
+#controllers > button {
+  flex: 0 1 auto;
+}

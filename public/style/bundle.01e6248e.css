@@ -10,6 +10,14 @@
 #controllers {
   display: flex;
 }
+
+#controllers > input {
+  flex: 1 2 auto;
+}
+
+#controllers > button {
+  flex: 1 1 auto;
+}
 .item .clickable {
   display: flex;
   justify-content: space-between;
