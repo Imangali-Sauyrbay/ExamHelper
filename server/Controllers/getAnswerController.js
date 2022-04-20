@@ -44,7 +44,7 @@ const getMatches = (text, arr = []) => {
   
     for (let i = 0; i < words.length; i++) {
       const word = words[i];
-      if(word.length <= 3) continue;
+      if(word.length < 3) continue;
   
       const regex = new RegExp(word, 'gi');
       
@@ -75,7 +75,7 @@ const markMatches = (text, arr = []) => arr.map(({title, answer}) => {
   const words = text.split(/\s+/);
   for (let i = 0; i < words.length; i++) {
     const word = words[i];
-    if(word.length <= 3) continue;
+    if(word.length < 3) continue;
 
     const regex = new RegExp(word, 'gi');
     
