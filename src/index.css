@@ -20,10 +20,10 @@
   display: flex;
 }
 
-#controllers > input {
+#controllers  input {
   flex: 1 2 auto;
 }
 
-#controllers > button {
+#controllers  button {
   flex: 0 1 auto;
 }
