@@ -29,24 +29,27 @@ const getErrorMessage = e => [{
   answer: e.message + '; Попробуй перезагрузить страницу!'
 }];
 
-const getMatches = (text, arr = []) => arr.filter(({title, answer}) => {
-  const globalRegex = new RegExp(text, 'gi');
-
-  if(title.match(globalRegex) || answer.match(globalRegex)) return true;
-
-  const words = text.split(/\s+/);
-
-  for (let i = 0; i < words.length; i++) {
-    const word = words[i];
-    if(word.length < 2) continue;
-
-    const regex = new RegExp(word, 'gi');
-    
-    if(title.match(regex) || answer.match(regex)) return true;
-  }
-
-  return false;
-});
+const getMatches = (text, arr = []) => [
+  ...arr.filter(({title, answer}) => {
+    const globalRegex = new RegExp(text, 'gi');
+    if(title.match(globalRegex) || answer.match(globalRegex)) return true;
+    return false;
+  }),
+  ...arr.filter(({title, answer}) => {
+    const words = text.split(/\s+/);
+  
+    for (let i = 0; i < words.length; i++) {
+      const word = words[i];
+      if(word.length <= 3) continue;
+  
+      const regex = new RegExp(word, 'gi');
+      
+      if(title.match(regex) || answer.match(regex)) return true;
+    }
+  
+    return false;
+  })
+];
 
 const highLight = (str, regex) => str.replace(regex, value => `<span class="hl">${value}</span>`);
 
@@ -58,7 +61,7 @@ const markMatches = (text, arr = []) => arr.map(({title, answer}) => {
   const words = text.split(/\s+/);
   for (let i = 0; i < words.length; i++) {
     const word = words[i];
-    if(word.length < 2) continue;
+    if(word.length <= 3) continue;
 
     const regex = new RegExp(word, 'gi');
     
