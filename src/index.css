@@ -16,14 +16,15 @@
   margin-right: 1px;
 }
 
-#controllers {
+#controllers, #controllers form {
   display: flex;
+  justify-content: flex-start;
 }
 
-#controllers  input {
-  flex: 1 2 auto;
+#controllers input, #controllers form {
+  flex: 0 2 auto;
 }
 
-#controllers  button {
-  flex: 0 1 auto;
+#controllers button {
+  flex: 0 0 auto;
 }

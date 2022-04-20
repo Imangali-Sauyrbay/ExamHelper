@@ -7,16 +7,18 @@
   padding: 5px;
   margin-top: 5px;
 }
-#controllers {
+#controllers, #controllers form {
   display: flex;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
 }
 
-#controllers > input {
-  flex: 1 2 auto;
+#controllers input, #controllers form {
+  flex: 1 2;
 }
 
-#controllers > button {
-  flex: 1 1 auto;
+#controllers button {
+  flex: 0 0;
 }
 .item .clickable {
   display: flex;
