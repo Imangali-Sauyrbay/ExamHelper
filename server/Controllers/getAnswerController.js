@@ -16,7 +16,7 @@ const getMatches = (text, arr = []) => {
   const globalMatches = [];
   const wordMathces = [];
 
-  arr.forEach(({title}) => {
+  arr.forEach(({title, answer}) => {
     title = title.trim();
 
     const globalRegex = new RegExp(text, 'gi');
