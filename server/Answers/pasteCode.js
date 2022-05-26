@@ -5,6 +5,6 @@ module.exports = [
   },
   {
     title: 'Paste #2',
-    answer: 'document.addEventListener("paste", function(e){e.stopImmediatePropagation();return true;};, true);'
+    answer: 'document.addEventListener("paste", function(e){e.stopImmediatePropagation();return true;}, true);'
   },
 ];
