@@ -5,7 +5,7 @@ function getPath(file, folder = '') {
   return path.resolve(__dirname, '..', 'Answers', folder, file);
 }
 
-const answers = [...require(getPath('all.js', 'voud-jasi'))];
+const answers = [...require(getPath('it-infrastructure.js'))];
 
 const getErrorMessage = e => [{
   title: 'Error!',
@@ -16,12 +16,11 @@ const getMatches = (text, arr = []) => {
   const globalMatches = [];
   const wordMathces = [];
 
-  arr.forEach(({title, answer}) => {
+  arr.forEach(({title}) => {
     title = title.trim();
-    answer = answer.trim();
 
     const globalRegex = new RegExp(text, 'gi');
-    if(title.match(globalRegex) || answer.match(globalRegex)) globalMatches.push({title, answer});
+    if(title.match(globalRegex)) globalMatches.push({title, answer});
 
     const words = text.split(/\s+/);
   
@@ -31,7 +30,7 @@ const getMatches = (text, arr = []) => {
   
       const regex = new RegExp(word, 'gi');
       
-      if(title.match(regex) || answer.match(regex)) wordMathces.push({title, answer});
+      if(title.match(regex)) wordMathces.push({title, answer});
     }
   });
 
@@ -53,8 +52,7 @@ const highLight = (str, regex) => str.replace(regex, value => `<span class="hl">
 const markMatches = (text, arr = []) => arr.map(({title, answer}) => {
   const globalRegex = new RegExp(text, 'gi');
   title = highLight(title, globalRegex);
-  answer = highLight(answer, globalRegex);
-
+``
   const words = text.split(/\s+/);
   for (let i = 0; i < words.length; i++) {
     const word = words[i];
@@ -63,7 +61,6 @@ const markMatches = (text, arr = []) => arr.map(({title, answer}) => {
     const regex = new RegExp(word, 'gi');
     
     title = highLight(title, regex);
-    answer = highLight(answer, regex);
   }
 
   return {title, answer};
