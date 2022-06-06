@@ -1,0 +1,80 @@
+
+.item {
+  max-width: 100%;
+  border: 1px #ccc solid;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.item .clickable {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item .title {
+  font-size: 1.1em;
+  user-select: none;
+  pointer-events: none;
+  margin: 5px;
+}
+
+.item .clickable button {
+  margin-right: 10px;
+}
+
+.item .answer {
+  border: 1px black solid;
+  border-radius: 20px;
+  padding-left: 5px;
+}
+
+.item .answer_text {
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+.closed .answer {
+  display: none;
+}
+
+.hl {
+  background-color: yellow;
+}
+
+.getAll {
+  margin-top: 5px;
+}
+
+.loader {
+  margin: auto;
+  background: transparent;
+  shape-rendering: auto;
+}
+
+.btn_container {
+  margin-top: 2px;
+}
+
+.btn_container .btn {
+  margin-right: 1px;
+}
+
+#controllers, #controllers form {
+  display: flex;
+  justify-content: flex-start;
+}
+
+#controllers input, #controllers form {
+  flex: 0 2 auto;
+}
+
+#controllers button {
+  flex: 0 0 auto;
+}
