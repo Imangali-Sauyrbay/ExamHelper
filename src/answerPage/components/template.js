@@ -9,7 +9,7 @@ export default (row) => {
     <div class="col-md-8 offset-md-2 col-sm-10 offset-sm-1 border border-dark bg-light rounded-1">
       <div class="row py-1">
         <div class="col mx-2 h5">${question}</div>
-        <div class="col-2 text-end">${UTCDateToLocaleDateTime(asked_at) || ''}</div>
+        <div class="col-3 col-md-2 text-end">${UTCDateToLocaleDateTime(asked_at) || ''}</div>
       </div>
       <div class="row border-bottom border-top border-dark py-1 overflow-auto bg-white" style="max-height: 200px;">
         <pre class="col-sm-12">${answersToString(ans)}</pre>

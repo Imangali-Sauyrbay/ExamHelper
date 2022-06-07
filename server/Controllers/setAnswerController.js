@@ -20,6 +20,7 @@ class Controller{
   async ask(req, res) {
     try {
       const question = String(req.body.question).trim();
+      if(!question) return res.status(400).json([{title: 'Пустой вопрос!', answer: ''}]);
       const time = new Date();
 
       const [{insertId}] = await db.insert('questions', ['question', 'asked_at'], [question, time]);

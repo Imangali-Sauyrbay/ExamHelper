@@ -77,13 +77,13 @@ class Controller{
       
       const query = String(req.body.query).trim();
       if(query.toLowerCase() === '') {
-        const [rows] = await db.query('SELECT * FROM `questions`');
+        const [rows] = await db.query('SELECT * FROM `questions` ORDER BY asked_at DESC');
         await db.withAnswers(rows);
         return res.json(rows);
       }
 
       const forfind = db._connection.escape(query.trim()).replace(/^'|'$/gim, '');
-      const [rows] = await db.query(`SELECT * FROM questions WHERE question LIKE '%${forfind}%'`);
+      const [rows] = await db.query(`SELECT * FROM questions WHERE question LIKE '%${forfind}%' ORDER BY asked_at DESC`);
       await db.withAnswers(rows);
 
 
