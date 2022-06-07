@@ -1,8 +1,9 @@
 const exp = require('express');
-require('dotenv').config();
 const bodyParser = require('body-parser');
 const path = require('path');
 const { createServer } = require('http');
+
+require('dotenv').config({path: path.resolve(__dirname, '..', '.env')});
 
 const getController = require('./Controllers/getAnswerController');
 const setController = require('./Controllers/setAnswerController');
