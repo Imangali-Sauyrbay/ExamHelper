@@ -12,7 +12,7 @@ class DB {
   }
 
   connection() {
-    return mysql.createConnection({
+    return mysql.createConnection(process.env.JAWSDB_URL || {
       host: this.host,
       port: this.port,
       user: this.user,
