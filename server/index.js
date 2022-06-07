@@ -23,14 +23,14 @@ app.get('/',(req,res)=>{
 app.get('/add',(req,res)=>{
   const pass = req.query.pass || '';
 
-  if(pass !== process.env.PASS) return res.sendFile(path.resolve(__dirname, '..', 'public', 'notpermitted.html'));
+  if(pass !== process.env.PASS || !pass) return res.sendFile(path.resolve(__dirname, '..', 'public', 'notpermitted.html'));
   res.sendFile(path.resolve(__dirname, '..', 'public', 'add.html'));
 });
 
 app.get('/answer',(req,res)=>{
   const pass = req.query.pass || '';
 
-  if(pass !== process.env.PASS) res.sendFile(path.resolve(__dirname, '..', 'public', 'notpermitted.html'));
+  if(pass !== process.env.PASS || !pass) res.sendFile(path.resolve(__dirname, '..', 'public', 'notpermitted.html'));
   else res.sendFile(path.resolve(__dirname, '..', 'public', 'answer.html'));
 });
 
