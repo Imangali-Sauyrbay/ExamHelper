@@ -10,7 +10,7 @@ const getErrorMessage = e => [{
 const getMatches = async (text) => {
   let matches = [];
   const sql = word => `
-  SELECT * FROM exam.answers WHERE
+  SELECT * FROM answers WHERE
   title LIKE '%${word}%'
   OR answer LIKE '%${word}%';
   `;
