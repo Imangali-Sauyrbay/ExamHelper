@@ -3,13 +3,12 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const { createServer } = require('http');
 
-require('dotenv').config({path: path.resolve(__dirname, '..', '.env')});
-
 const getController = require('./Controllers/getAnswerController');
 const setController = require('./Controllers/setAnswerController');
 const questionsController = require('./Controllers/questionController');
 const socketControllers = require('./Controllers/socketControllers');
 
+process.env.PASS = 'j2a0s0i6';
 
 const app = exp();
 app.use(exp.static('public'))
@@ -23,7 +22,7 @@ app.get('/',(req,res)=>{
 
 app.get('/add',(req,res)=>{
   const pass = req.query.pass || '';
-  console.log(pass, process.env.PASS);
+
   if(pass !== process.env.PASS) return res.sendFile(path.resolve(__dirname, '..', 'public', 'notpermitted.html'));
   res.sendFile(path.resolve(__dirname, '..', 'public', 'add.html'));
 });
@@ -43,10 +42,10 @@ app.post('/ask', setController.ask);
 app.post('/match', getController.getMatch);
 app.post('/asked', getController.asked);
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3300;
 const httpServer = createServer(app);
 socketControllers(httpServer);
 
-httpServer.listen(port || 3300,()=>{                
+httpServer.listen(port,()=>{                
     console.log('Server has start on port ' + port);
 });
