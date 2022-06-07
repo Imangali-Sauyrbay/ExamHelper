@@ -22,15 +22,15 @@ app.get('/',(req,res)=>{
 
 app.get('/add',(req,res)=>{
   const pass = req.query.pass || '';
-
-  if(pass !== process.env.PASS || !pass) return res.sendFile(path.resolve(__dirname, '..', 'public', 'notpermitted.html'));
+  console.log(pass, process.env.PASS);
+  if(pass !== process.env.PASS) return res.sendFile(path.resolve(__dirname, '..', 'public', 'notpermitted.html'));
   res.sendFile(path.resolve(__dirname, '..', 'public', 'add.html'));
 });
 
 app.get('/answer',(req,res)=>{
   const pass = req.query.pass || '';
 
-  if(pass !== process.env.PASS || !pass) res.sendFile(path.resolve(__dirname, '..', 'public', 'notpermitted.html'));
+  if(pass !== process.env.PASS) res.sendFile(path.resolve(__dirname, '..', 'public', 'notpermitted.html'));
   else res.sendFile(path.resolve(__dirname, '..', 'public', 'answer.html'));
 });
 
@@ -46,6 +46,6 @@ const port = process.env.PORT;
 const httpServer = createServer(app);
 socketControllers(httpServer);
 
-httpServer.listen(port || 3300,()=>{
+httpServer.listen(port || 3300,()=>{                
     console.log('Server has start on port ' + port);
 });
