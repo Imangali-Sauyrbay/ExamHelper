@@ -21,14 +21,14 @@ app.get('/',(req,res)=>{
 });
 
 app.get('/add',(req,res)=>{
-  const pass = req.query.pass;
+  const pass = req.query.pass || '';
 
   if(pass !== process.env.PASS) return res.sendFile(path.resolve(__dirname, '..', 'public', 'notpermitted.html'));
   res.sendFile(path.resolve(__dirname, '..', 'public', 'add.html'));
 });
 
 app.get('/answer',(req,res)=>{
-  const pass = req.query.pass;
+  const pass = req.query.pass || '';
 
   if(pass !== process.env.PASS) res.sendFile(path.resolve(__dirname, '..', 'public', 'notpermitted.html'));
   else res.sendFile(path.resolve(__dirname, '..', 'public', 'answer.html'));
@@ -47,5 +47,5 @@ const httpServer = createServer(app);
 socketControllers(httpServer);
 
 httpServer.listen(port || 3300,()=>{
-    console.log('Server has start on port 3300');
+    console.log('Server has start on port ' + port);
 });
