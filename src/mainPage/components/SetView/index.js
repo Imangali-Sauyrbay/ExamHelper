@@ -5,7 +5,6 @@ function toHtmlElement(item = {}, index = '') {
 
   const mainWrapper = document.createElement('div');
   mainWrapper.classList.add('item');
-  mainWrapper.classList.add('closed');
 
   const titleWrapper = document.createElement('div');
   titleWrapper.classList.add('clickable');
@@ -27,7 +26,7 @@ function toHtmlElement(item = {}, index = '') {
 
   const answerText = document.createElement('pre');
   answerText.classList.add('answer_text');
-  answerText.innerHTML = answer;
+  answerText.innerHTML = 'answer: ' + answer;
 
   answerWrapper.appendChild(answerText);
   mainWrapper.appendChild(answerWrapper);
@@ -39,6 +38,11 @@ export default (container) =>{
   const wrapper = document.querySelector(container);
   return (data = []) => {
     wrapper.innerHTML = "";
+
+    if(data.length === 0) {
+      wrapper.innerHTML =  '<h4 class="text-center">Нет ответов на базе!</h4>';
+      return;
+    }
     data.map(toHtmlElement).forEach($el => wrapper.appendChild($el));
   }
 } 

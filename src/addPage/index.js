@@ -58,6 +58,8 @@ const listener = document.addEventListener('DOMContentLoaded', () => {
     })
     .then(res => {
       if(res.ok) {
+        title.value = '';
+        answer.value = '';
         return res.json().then(data => catchAll('alert-success')(data.message));
       }
 

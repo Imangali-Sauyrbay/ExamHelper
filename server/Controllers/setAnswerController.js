@@ -3,13 +3,13 @@ const db = require('./../DB');
 class Controller{
   async addNew(req, res) {
     try {
-      if(req.body.pass !== '134679') return res.status(403).json({message: 'Неправильный пароль'});
+      if(req.body.pass !== process.env.PASS) return res.status(403).json({message: 'Неправильный пароль'});
 
       const title = String(req.body.title).trim();
       const answer = String(req.body.answer).trim();
-      const time = new Date().toISOString().slice(0, 19).replace('T', ' ');
+      const time = new Date();
 
-      await db.query(`INSERT INTO answers (title, answer, created_at) VALUES ('${title}', '${answer}', '${time}')`);
+      await db.insert('answers', ['title', 'answer', 'created_at'], [title, answer, time]);
       res.status(201).json({message: 'Успешно добавлено!'});
     } catch (error) {
       console.error(error);
@@ -17,8 +17,19 @@ class Controller{
     }
   }
 
-  async deleteOne(req, res) {
+  async ask(req, res) {
+    try {
+      const question = String(req.body.question).trim();
+      const time = new Date();
 
+      const [{insertId}] = await db.insert('questions', ['question', 'asked_at'], [question, time]);
+      db.getConnection().then(conn => conn.emit('question_asked', insertId));
+
+      res.status(201).json([{title: 'Вопрос успешно добавлено!', answer: ''}]);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json([{title: 'Ошибка сервера!', answer: ''}]);
+    }
   }
 
 }

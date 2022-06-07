@@ -21,6 +21,11 @@ const pages = [
     filename: 'notpermitted.html',
     template: path.resolve(__dirname, 'src', 'notpermittedPage', 'index.html')
   }),
+  new HtmlWebpackPlugin({
+    chunks: ['answer'],
+    filename: 'answer.html',
+    template: path.resolve(__dirname, 'src', 'answerPage', 'index.html')
+  }),
 ]
 
 module.exports = {
@@ -28,11 +33,12 @@ module.exports = {
     main: path.resolve(__dirname, 'src', 'mainPage','index.js'),
     add: path.resolve(__dirname, 'src', 'addPage','index.js'),
     notpermitted: path.resolve(__dirname, 'src', 'notpermittedPage','index.js'),
+    answer: path.resolve(__dirname, 'src', 'answerPage','index.js'),
   },
   output: {
     path: path.join(__dirname, 'public'),
     publicPath: '/',
-    filename: 'js/bundle.[contenthash].js',
+    filename: 'js/[name].bundle.[contenthash].js',
     chunkFilename: 'js/[id].bundle_[chunkhash].js',
     sourceMapFilename: '[file].map'
   },
@@ -51,9 +57,6 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         use: {
           loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
         }
       }
     ]
