@@ -30,8 +30,8 @@ app.get('/add',(req,res)=>{
 app.get('/answer',(req,res)=>{
   const pass = req.query.pass;
 
-  if(pass !== process.env.PASS) return res.sendFile(path.resolve(__dirname, '..', 'public', 'notpermitted.html'));
-  res.sendFile(path.resolve(__dirname, '..', 'public', 'answer.html'));
+  if(pass !== process.env.PASS) res.sendFile(path.resolve(__dirname, '..', 'public', 'notpermitted.html'));
+  else res.sendFile(path.resolve(__dirname, '..', 'public', 'answer.html'));
 });
 
 app.get('*', (req, res) => res.send('<h1 style="text-align:center; margin-top: 20px;">Страница не найдена!</h1>'));
